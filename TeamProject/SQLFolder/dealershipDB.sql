@@ -21,3 +21,11 @@ create table customers (customer_id int(10) not NULL AUTO_INCREMENT , name VARCH
                         FOREIGN KEY (car_id) REFERENCES cars(car_id),
                         FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id));
 
+create table invoice ( 
+invoice_id int (10) not NULL AUTO_INCREMENT ,  
+order_date date NOT null,  
+final_price double (7,2) NOT null,  
+PRIMARY KEY (invoice_id), 
+FOREIGN KEY (customer_id) REFERENCES customers(customer_id), 
+FOREIGN KEY (car_id) REFERENCES cars(car_id), 
+); 
