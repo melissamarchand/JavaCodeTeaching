@@ -11,7 +11,7 @@ public class CreateCustomerTable {
 
 	// if previous customer table exists, drop old table
 	
-private static final String dropTableSQL = "drop table customer;";
+        private static final String dropTableSQL = "drop table customer;";
 	
 	private static final String createTableSQL = "create table customer (\r\n" + " Car_id int(7) primary key, \r\n"
 			+ " name varchar(20), \r\n" + " address varchar(60),\r\n" + " email varchar(20),\r\n" 
