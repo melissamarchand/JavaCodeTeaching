@@ -1,40 +1,39 @@
-package CreateUsersTable;
+package createCustomerTable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+// create "Customers" table in java JDBC program in a database.
 
-// CREATE "users" table in java JDBC program in a database.
+public class CreateCustomersTable {
 
+	// if previous customer table exists, drop old table
 
-public class createUsersTable {
+	private static final String dropTableSQL = "drop table customers;";
 
-	private static final String dropTableSQL = "drop table users;";
-	
-	private static final String createTableSQL = "create table users (\r\n" + " id int(3) primary key, \r\n"
-			+ " name varchar(20), \r\n" + " email varchar(20),\r\n" + " country varchar(20),\r\n"
-			+ " password varchar(20)\r\n" + "  );";
+	private static final String createTableSQL = "create table customers (\r\n" + " Car_id int(7) primary key, \r\n"
+			+ " name varchar(20), \r\n" + " address varchar(60),\r\n" + " email varchar(20),\r\n"
+			+ " phone_number int(10)\r\n" + "  );";
 
 	public static void main(String[] args) throws SQLException {
-	createUsersTable createTableExample = new createUsersTable();
-		createTableExample.createTable();
+		CreateCustomersTable createTable = new CreateCustomersTable();
+		createTable.createTable();
 	}
 
 	public void createTable() throws SQLException {
 		System.out.println(createTableSQL);
 		// establishing a connection
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false",
-				"root",
-				"");
+				"root", "");
 
 				// create statement using connection object
 				Statement statement = connection.createStatement();) {
 
 			// execute the query or update query
-			statement.execute(dropTableSQL);
-			
+			// statement.execute(dropTableSQL);
+
 			statement.execute(createTableSQL);
 		} catch (SQLException e) {
 
