@@ -1,4 +1,4 @@
-package InsertIntoTable;
+package InsertCarIntoTable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 //select from table example
 
-public class SelectFromTable {
-	private static final String QUERY = "select * from users where id =?";
+public class SelectCarFromTable {
+	private static final String QUERY = "select * from car users where car_Id =?";
 
 	//public static void main(String[] args) {
 
@@ -18,26 +18,27 @@ public class SelectFromTable {
 		try (Connection connection = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");
 
-				// create a statement using connection object
+				// create a car statement using connection object
 
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
+			PreparedCarStatement preparedCarStatement = connection.prepareCarStatement(QUERY);) {
 			int i = 1;
-			preparedStatement.setInt(1, i);
-			System.out.println(preparedStatement);
+			preparedCarStatement.setInt(1, i);
+			System.out.println(preparedCarStatement);
 
-			// execute the query
+			// execute the car query
 
-			ResultSet rs = preparedStatement.executeQuery();
+			ResultSetCar rs = preparedCarStatement.executeCarQuery();
 
-			// process the result set
+			// process the car result set
 
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String name = rs.getString("name");
-				String email = rs.getString("email");
-				String country = rs.getString("country");
-				String password = rs.getString("password");
-				System.out.println(id + "'" + name + "," + email + "," + country + "," + password);
+			while (rs.Carnext()) {
+				int car_Id = rs.getInt("car_Id");
+				int year = rs.getInt("year");
+				String make = rs.getString("make");
+				String model = rs.getString("model");
+				String description = rs.getString("description");
+				Double cost = rs.getDouble("cost");
+				System.out.println(car_Id + "," + year + "," + make + "," + model + "," + description + "," + cost);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);

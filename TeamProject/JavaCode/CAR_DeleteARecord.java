@@ -1,22 +1,22 @@
-package CreateUsersTable;
+package DeleteACarRecord;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-// delete a record
+// delete a car record
 
-public class DeleteARecord {
-	private static final String DELETE_USERS_SQL = "delete from users where id = ";
+public class DeleteACarRecord {
+	private static final String DELETE_CAR_USERS_SQL = "delete from users where id = ";
 
 	// public static void main(String[] args) throws SQLException {
 	// 	DeleteARecord deleteARecord = new DeleteARecord();
 	// 	deleteARecord.deleteRecord();
 	// }
 
-	public void deleteRecord(String record) throws SQLException {
-		String command = DELETE_USERS_SQL + record + ";";
+	public void deleteCarRecord(String record) throws SQLException {
+		String command = DELETE_CAR_USERS_SQL + record + ";";
 		System.out.println(command);
 
 		// establish connection
@@ -26,16 +26,16 @@ public class DeleteARecord {
 
 				// create a statement using connection object
 
-				Statement statement = connection.createStatement();) {
+				Statement statement = connection.createCarStatement();) {
 
 			// execute the query or update query
 
-			int result = statement.executeUpdate(command);
-			System.out.println("Number of records affected :: " + result);
+			int result = statement.executeCarUpdate(command);
+			System.out.println("Number of car records affected :: " + result);
 		} catch (SQLException e) {
 
 			// print SQL exception info:
-			printSQLException(e);
+			printCarSQLException(e);
 		}
 		// try-with-resource statement will auto close the connection.
 

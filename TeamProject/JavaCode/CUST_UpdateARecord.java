@@ -1,22 +1,22 @@
-package InsertIntoTable;
+package UpdateACustRecord;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-// update a record
-public class UpdateARecord {
+// update a customer record
+public class UpdateACustRecord {
 
-	public static final String UPDATE_USERS_SQL = "update users set name = ? where id = ?;";
+	public static final String UPDATE_CUSTOMER_USERS_SQL = "update customer users set name = ? where customer_id = ?;";
 
 //	public static void main(String[] args) throws SQLException {
 //		UpdateACustRecord updateARecord = new UpdateACustRecord();
-//		updateACustRecord.updateRecord();
+//		updateACustRecord.updateARecord();
 //	}
 
 	public void updateCustRecord() throws SQLException {
-		System.out.println(UPDATE_USERS_SQL);
+		System.out.println(UPDATE_CUSTOMER_USERS_SQL);
 
 		// establish a connection
 
@@ -24,16 +24,19 @@ public class UpdateARecord {
 				"root", "");
 
 // create a statement using connection object
-				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USERS_SQL)) {
-			preparedStatement.setString(1, "Ram");
-			preparedStatement.setInt(2, 1);
+			PreparedCustStatement preparedCustStatement = connection.prepareCustStatement(UPDATE_CUSTOMER_USERS_SQL)) {
+			preparedCustStatement.setInt(1, customer_id);
+			preparedCustStatement.setString(2, name);
+			preparedCustStatement.setString(3, address);
+			preparedCustStatement.setString(4, phone);
+			preparedCustStatement.setString(5, email);
 
 			// execute query or update query
 
-			preparedStatement.executeUpdate();
+			preparedCustStatement.executeUpdate();
 		} catch (SQLException e) {
 
-			// print SQLException info
+			// print customer SQLException info
 			printSQLException(e);
 		}
 // try-with-resource statement will auto close the connection.

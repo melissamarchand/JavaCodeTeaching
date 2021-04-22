@@ -1,4 +1,4 @@
-package InsertIntoTable;
+package InsertCustIntoTable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//select from table example
+//select customer from table
 
-public class SelectFromTable {
-	private static final String QUERY = "select * from users where id =?";
+public class SelectCustFromTable {
+	private static final String QUERY = "select * from customer users where customer_id =?";
 
 //	public static void main(String[] args) {
 
@@ -20,24 +20,24 @@ public class SelectFromTable {
 
 				// create a statement using connection object
 
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
+			PreparedCustStatement preparedCustStatement = connection.prepareCustStatement(QUERY);) {
 			int i = 1;
-			preparedStatement.setInt(1, i);
-			System.out.println(preparedStatement);
+			preparedCustStatement.setInt(1, i);
+			System.out.println(preparedCustStatement);
 
 			// execute the query
 
-			ResultSet rs = preparedStatement.executeQuery();
+			ResultSetCust rs = preparedCustStatement.executeQuery();
 
 			// process the result set
 
 			while (rs.next()) {
-				int id = rs.getInt("id");
+				int customer_id = rs.getInt("customer_id");
 				String name = rs.getString("name");
+				String address = rs.getString("address");
+				String phone = rs.getString("phone");
 				String email = rs.getString("email");
-				String country = rs.getString("country");
-				String password = rs.getString("password");
-				System.out.println(id + "'" + name + "," + email + "," + country + "," + password);
+				System.out.println(customer_id + "," + name + "," + address + "," + phone + "," + email);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);

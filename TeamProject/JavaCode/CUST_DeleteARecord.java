@@ -1,14 +1,14 @@
-package CreateCustUsersTable;
+package DeleteACustRecord;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-// delete a record
+// delete a cust record
 
 public class DeleteACustRecord {
-	private static final String DELETE_CUST_USERS_SQL = "delete from users where id = ;";
+	private static final String DELETE_CUST_USERS_SQL = "delete from customer users where customer_id = ;";
 
 	//public static void main(String[] args) throws SQLException {
 	//	DeleteARecord deleteARecord = new DeleteARecord();
@@ -25,12 +25,12 @@ public class DeleteACustRecord {
 
 				// create a statement using connection object
 
-				Statement statement = connection.createStatement();) {
+				Statement statement = connection.createCustStatement();) {
 
 			// execute the query or update query
 
-			int result = statement.executeUpdate(DELETE_CUST_USERS_SQL);
-			System.out.println("Number of records affected :: " + result);
+			int result = statement.executeCustUpdate(DELETE_CUST_USERS_SQL);
+			System.out.println("Number of customer records affected :: " + result);
 		} catch (SQLException e) {
 
 			// print SQL exception info:

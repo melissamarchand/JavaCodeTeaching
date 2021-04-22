@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-//INSERT a record into "users" table.
+//INSERT a customer record into cust "users" table.
 
-public class insertIntoTable {
-	private static final String INSERT_CUST_USERS_SQL = "INSERT INTO users" + " (id, name, email, country, password) VALUES "
+public class insertCustIntoTable {
+	private static final String INSERT_CUST_USERS_SQL = "INSERT INTO customer users" + " (customer_id, name, address, phone, email) VALUES "
 					+ "  (?, ?, ?, ?, ?);";
 
 			//public static void main(String[] args) throws SQLException {
@@ -27,20 +27,20 @@ public class insertIntoTable {
 						// create a statement using connection object
 
 						PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-					preparedStatement.setInt(1, 1);
-					preparedStatement.setString(2, "Melissa");
-					preparedStatement.setString(3, "melissa@email.com");
-					preparedStatement.setString(4, "US");
-					preparedStatement.setString(5, "secret");
+					preparedStatement.setInt(1, customer_id);
+					preparedStatement.setString(2, name);
+					preparedStatement.setString(3, address);
+					preparedStatement.setString(4, phone);
+					preparedStatement.setString(5, email);
 
-					System.out.println(preparedStatement);
+					System.out.println(preparedCustStatement);
 
 					// execute the query or update query
 
-					preparedStatement.executeUpdate();
+					preparedCustStatement.executeCustUpdate();
 				} catch (SQLException e) {
 
-					// print SQL exception info
+					// print cust SQL exception info
 
 					printSQLException(e);
 				}

@@ -1,36 +1,40 @@
-package InsertIntoTable;
+package InsertCarIntoTable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.PreparedCarStatement;
 import java.sql.SQLException;
 
-// update a record
-public class UpdateARecord {
+// update a car record
+public class UpdateACarRecord {
 
-	public static final String UPDATE_USERS_SQL = "update users set name = ? where id = ?;";
+	public static final String UPDATE_CAR_USERS_SQL = "update car users set car_Id = ? where car_Id = ?;";
 
 	//public static void main(String[] args) throws SQLException {
 	//	UpdateARecord updateARecord = new UpdateARecord();
 	//	updateARecord.updateRecord();
 	//}
 
-	public void updateRecord() throws SQLException {
-		System.out.println(UPDATE_USERS_SQL);
+	public void updateCarRecord() throws SQLException {
+		System.out.println(UPDATE_CAR_USERS_SQL);
 
 		// establish a connection
 
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false",
 				"root", "");
 
-// create a statement using connection object
-				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USERS_SQL)) {
-			preparedStatement.setString(1, "Ram");
-			preparedStatement.setInt(2, 1);
+// create a car statement using connection object
+			PreparedCarStatement preparedCarStatement = connection.prepareCarStatement(UPDATE_CAR_USERS_SQL)) {
+			preparedCarStatement.setInt(1, car_Id);
+			preparedCarStatement.setInt(2, year);
+			preparedCarStatement.setString(3, make);
+			preparedCarStatement.setString(4, model);
+			preparedCarStatement.setString(5, description);
+			preparedCarStatement.setString(6, cost);
 
 			// execute query or update query
 
-			preparedStatement.executeUpdate();
+			preparedCarStatement.executeCarUpdate();
 		} catch (SQLException e) {
 
 			// print SQLException info
