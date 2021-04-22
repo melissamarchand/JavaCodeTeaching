@@ -30,15 +30,45 @@ public class Project{
                     String response = sc.nextLine();
                     DeleteARecord.deleteRecord(response);
                 } break;
-
                 case "3": {} break;
                 case "4": {
                     System.out.println("What car would you like to buy");
-                    String response = sc.nextLine();} break;
-                case "5": {} break;
-                case "6": {} break;
-                case "7": {} break;
-                case "8": {} break;
+                    String response = sc.nextLine();
+                } break;
+                case "5": {
+                    System.out.println("What is the customer's name?");
+                    String response1 = sc.nextLine(); 
+                    System.out.println("what is the customers email?");
+                    String response2 = sc.nextLine(); 
+                    System.out.println("what is the customer's address?");
+                    String response3 = sc.nextLine();
+                    System.out.println("What is the customers phone number?");
+                    String response4 = sc.nextLine();
+                    insertCustRecord(response1, response2, response3, response4);
+                } break;
+                case "6": {
+                    System.out.println("What customer would you like to update?");
+                    String response = sc.nextLine();
+                    System.out.println("What is the customer's name?");
+                    String response1 = sc.nextLine();
+                    System.out.println("what is the customers email?");
+                    String response2 = sc.nextLine();
+                    System.out.println("what is the customer's address?");
+                    String response3 = sc.nextLine();
+                    System.out.println("What is the customers phone number?");
+                    String response4 = sc.nextLine();
+                    updateCustRecord(response, response1, response2, response3, response4);
+                } break;
+                case "7": {
+                    System.out.println("What customer would you like to delete?");
+                    String response = sc.nextLine();
+                    deleteCustRecord(response);
+                } break;
+                case "8": {
+                    System.out.println("What customer would you like to delete?");
+                    String response = sc.nextLine();
+                    ListCustRecord(response);
+                } break;
                 case "9": loop = false; break;
                 default: System.out.println("Error please reselect option"); break;
             }
