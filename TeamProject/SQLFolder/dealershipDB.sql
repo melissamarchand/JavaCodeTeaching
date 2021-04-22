@@ -67,7 +67,7 @@ VALUES
     "ssewaa@domain.org"
   );
   INSERT INTO
-  cars(invoice_id, order_date, final_price, customer_id, car_id)
+  invoices(invoice_id, order_date, final_price, customer_id, car_id)
 VALUES
   (
     1001,
