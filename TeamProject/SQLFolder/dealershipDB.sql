@@ -49,3 +49,37 @@ VALUES
     "red base package",
     21100
   );
+  INSERT INTO
+  customers(customer_id, name, address, phone, email)
+VALUES
+  (
+    101,
+    "Surabhi Grover",
+   "4306 Appomattox Rd, Mahtomedi, NH 03784",
+    "612-555-1212",
+    "address@domain.org"
+  ),
+  (
+    102,
+    "Solvig Thorvaldsen",
+    "99 Duluth Street, Wayzata, MN 55424",
+    "612-555-1212",
+    "ssewaa@domain.org"
+  );
+  INSERT INTO
+  cars(invoice_id, order_date, final_price, customer_id, car_id)
+VALUES
+  (
+    1001,
+    "2021-02-02",
+        23999,
+    102,
+    1
+  ),
+  (
+    2,
+    "2021-01-03",
+        24999,
+    "101,
+    2
+  );
