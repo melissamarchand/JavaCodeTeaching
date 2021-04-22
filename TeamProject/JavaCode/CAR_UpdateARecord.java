@@ -5,15 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-// update a record 
+// update a record
 public class UpdateARecord {
 
 	public static final String UPDATE_USERS_SQL = "update users set name = ? where id = ?;";
 
-	public static void main(String[] args) throws SQLException {
-		UpdateARecord updateARecord = new UpdateARecord();
-		updateARecord.updateRecord();
-	}
+	//public static void main(String[] args) throws SQLException {
+	//	UpdateARecord updateARecord = new UpdateARecord();
+	//	updateARecord.updateRecord();
+	//}
 
 	public void updateRecord() throws SQLException {
 		System.out.println(UPDATE_USERS_SQL);

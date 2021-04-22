@@ -1,4 +1,4 @@
-package CreateUsersTable;
+package CreateCustUsersTable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,16 +7,16 @@ import java.sql.Statement;
 
 // delete a record
 
-public class DeleteARecord {
-	private static final String DELETE_USERS_SQL = "delete from users where id = 1;";
+public class DeleteACustRecord {
+	private static final String DELETE_CUST_USERS_SQL = "delete from users where id = ;";
 
-	public static void main(String[] args) throws SQLException {
-		DeleteARecord deleteARecord = new DeleteARecord();
-		deleteARecord.deleteRecord();
-	}
+	//public static void main(String[] args) throws SQLException {
+	//	DeleteARecord deleteARecord = new DeleteARecord();
+	//	deleteARecord.deleteRecord();
+	//}
 
-	public void deleteRecord() throws SQLException {
-		System.out.println(DELETE_USERS_SQL);
+	public void deleteCustRecord() throws SQLException {
+		System.out.println(DELETE_CUST_USERS_SQL);
 
 		// establish connection
 
@@ -29,7 +29,7 @@ public class DeleteARecord {
 
 			// execute the query or update query
 
-			int result = statement.executeUpdate(DELETE_USERS_SQL);
+			int result = statement.executeUpdate(DELETE_CUST_USERS_SQL);
 			System.out.println("Number of records affected :: " + result);
 		} catch (SQLException e) {
 

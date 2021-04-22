@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class SelectFromTable {
 	private static final String QUERY = "select * from users where id =?";
 
-	public static void main(String[] args) {
+	//public static void main(String[] args) {
 
 		// establish connection
 

@@ -8,40 +8,42 @@ import java.sql.SQLException;
 //INSERT a record into "users" table.
 
 public class insertIntoTable {
-	private static final String INSERT_USERS_SQL = "INSERT INTO users" + " (id, name, email, country, password) VALUES "
-					+ "  (?, ?, ?, ?, ?);";
+	private static final String INSERT_USERS_SQL = "INSERT INTO users" + " (car_id, year, make, model, description, cost) VALUES "
+					+ "  (?, ?, ?, ?, ?, ?);";
 
-			public static void main(String[] args) throws SQLException {
-				insertIntoTable createTableExample = new insertIntoTable();
-				createTableExample.insertRecord();
-			}
+		//	public static void main(String[] args) throws SQLException {
+		//		insertIntoTable createTableExample = new insertIntoTable();
+		//		createTableExample.insertRecord();
+		//	}
 
-			public void insertRecord() throws SQLException {
+		public void insertRecord(String response, Int car_Id, Int year, String make, String model, String description, Double cost) throws SQLException {
+
 				System.out.println(INSERT_USERS_SQL);
-				
+
 				// establishing a connection
-				
+
 				try (Connection connection = DriverManager
 						.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");
 
 						// create a statement using connection object
-					
-						PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-					preparedStatement.setInt(1, 1);
-					preparedStatement.setString(2, "Melissa");
-					preparedStatement.setString(3, "melissa@email.com");
-					preparedStatement.setString(4, "US");
-					preparedStatement.setString(5, "secret");
+
+					PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
+					preparedStatement.setInt(1, car_Id);
+					preparedStatement.setInt(2, year);
+					preparedStatement.setString(3, make);
+					preparedStatement.setString(4, model);
+					preparedStatement.setString(5, description);
+					preparedStatement.setDouble(6, cost);
 
 					System.out.println(preparedStatement);
-					
+
 					// execute the query or update query
-					
+
 					preparedStatement.executeUpdate();
 				} catch (SQLException e) {
 
 					// print SQL exception info
-					
+
 					printSQLException(e);
 				}
 
@@ -64,5 +66,3 @@ public class insertIntoTable {
 				}
 			}
 		}
-
-

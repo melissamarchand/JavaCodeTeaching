@@ -1,4 +1,4 @@
-package InsertIntoTable;
+package InsertCustIntoTable;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,24 +8,24 @@ import java.sql.SQLException;
 //INSERT a record into "users" table.
 
 public class insertIntoTable {
-	private static final String INSERT_USERS_SQL = "INSERT INTO users" + " (id, name, email, country, password) VALUES "
+	private static final String INSERT_CUST_USERS_SQL = "INSERT INTO users" + " (id, name, email, country, password) VALUES "
 					+ "  (?, ?, ?, ?, ?);";
 
-			public static void main(String[] args) throws SQLException {
-				insertIntoTable createTableExample = new insertIntoTable();
-				createTableExample.insertRecord();
-			}
+			//public static void main(String[] args) throws SQLException {
+			//	insertIntoTable createTableExample = new insertIntoTable();
+			//	createTableExample.insertRecord();
+			//}
 
-			public void insertRecord() throws SQLException {
-				System.out.println(INSERT_USERS_SQL);
-				
+			public void insertCustRecord() throws SQLException {
+				System.out.println(INSERT_CUST_USERS_SQL);
+
 				// establishing a connection
-				
+
 				try (Connection connection = DriverManager
 						.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");
 
 						// create a statement using connection object
-					
+
 						PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
 					preparedStatement.setInt(1, 1);
 					preparedStatement.setString(2, "Melissa");
@@ -34,14 +34,14 @@ public class insertIntoTable {
 					preparedStatement.setString(5, "secret");
 
 					System.out.println(preparedStatement);
-					
+
 					// execute the query or update query
-					
+
 					preparedStatement.executeUpdate();
 				} catch (SQLException e) {
 
 					// print SQL exception info
-					
+
 					printSQLException(e);
 				}
 
@@ -64,4 +64,3 @@ public class insertIntoTable {
 				}
 			}
 		}
-
