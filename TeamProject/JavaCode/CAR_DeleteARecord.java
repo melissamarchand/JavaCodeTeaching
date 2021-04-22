@@ -8,15 +8,16 @@ import java.sql.Statement;
 // delete a record
 
 public class DeleteARecord {
-	private static final String DELETE_USERS_SQL = "delete from users where id = 1;";
+	private static final String DELETE_USERS_SQL = "delete from users where id = ";
 
-	public static void main(String[] args) throws SQLException {
-		DeleteARecord deleteARecord = new DeleteARecord();
-		deleteARecord.deleteRecord();
-	}
+	// public static void main(String[] args) throws SQLException {
+	// 	DeleteARecord deleteARecord = new DeleteARecord();
+	// 	deleteARecord.deleteRecord();
+	// }
 
-	public void deleteRecord() throws SQLException {
-		System.out.println(DELETE_USERS_SQL);
+	public void deleteRecord(String record) throws SQLException {
+		String command = DELETE_USERS_SQL + record + ";";
+		System.out.println(command);
 
 		// establish connection
 
@@ -29,7 +30,7 @@ public class DeleteARecord {
 
 			// execute the query or update query
 
-			int result = statement.executeUpdate(DELETE_USERS_SQL);
+			int result = statement.executeUpdate(command);
 			System.out.println("Number of records affected :: " + result);
 		} catch (SQLException e) {
 

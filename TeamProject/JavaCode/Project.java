@@ -23,9 +23,14 @@ public class Project{
                 case "1": {
                     System.out.println("What car would you like to buy");
                     String response = sc.nextLine();
-                    
+                    DeleteARecord.deleteRecord(response);
                 } break;
-                case "2": {} break;
+                case "2": {
+                    System.out.println("What car would you like to sell");
+                    String response = sc.nextLine();
+                    DeleteARecord.deleteRecord(response);
+                } break;
+
                 case "3": {} break;
                 case "4": {
                     System.out.println("What car would you like to buy");
