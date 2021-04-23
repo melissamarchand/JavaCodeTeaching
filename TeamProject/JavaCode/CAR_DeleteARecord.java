@@ -26,11 +26,11 @@ public class DeleteACarRecord {
 
 				// create a statement using connection object
 
-				Statement statement = connection.createCarStatement();) {
+				Statement statement = connection.createStatement();) {
 
 			// execute the query or update query
 
-			int result = statement.executeCarUpdate(command);
+			int result = statement.executeQuery(command);
 			System.out.println("Number of car records affected :: " + result);
 		} catch (SQLException e) {
 

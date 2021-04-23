@@ -6,7 +6,6 @@ public class Project{
 
         Scanner sc = new Scanner(System.in);
         Bool loop = true;
-gfbdfgbdfgnbdfgndfb
         while (loop){
             menuText();
             String selection = sc.nextLine();
@@ -72,7 +71,9 @@ gfbdfgbdfgnbdfgndfb
     }
 
     private static void updatePrice(){
-
+        System.out.println("What percent is the sale?");
+        int sale = sc.nextLine();
+        updateCarSale(sale);
     }
 
     private static void listCars(){

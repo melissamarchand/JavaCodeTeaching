@@ -8,14 +8,14 @@ import java.sql.SQLException;
 // update a car record
 public class UpdateACarRecord {
 
-	public static final String UPDATE_CAR_USERS_SQL = "update car users set car_Id = ? where car_Id = ?;";
+	public static final String UPDATE_CAR_USERS_SQL = "update car set price = price * (100 - ? ) / 100;";
 
 	//public static void main(String[] args) throws SQLException {
 	//	UpdateARecord updateARecord = new UpdateARecord();
 	//	updateARecord.updateRecord();
 	//}
 
-	public void updateCarRecord() throws SQLException {
+	public void updateCarSale(int sale) throws SQLException {
 		System.out.println(UPDATE_CAR_USERS_SQL);
 
 		// establish a connection
@@ -24,17 +24,12 @@ public class UpdateACarRecord {
 				"root", "");
 
 // create a car statement using connection object
-			PreparedCarStatement preparedCarStatement = connection.prepareCarStatement(UPDATE_CAR_USERS_SQL)) {
-			preparedCarStatement.setInt(1, car_Id);
-			preparedCarStatement.setInt(2, year);
-			preparedCarStatement.setString(3, make);
-			preparedCarStatement.setString(4, model);
-			preparedCarStatement.setString(5, description);
-			preparedCarStatement.setString(6, cost);
+			PreparedCarStatement preparedCarStatement = connection.prepareStatement(UPDATE_CAR_USERS_SQL)) {
+			preparedCarStatement.setInt(1, sale);
 
 			// execute query or update query
 
-			preparedCarStatement.executeCarUpdate();
+			preparedCarStatement.executeUpdate();
 		} catch (SQLException e) {
 
 			// print SQLException info

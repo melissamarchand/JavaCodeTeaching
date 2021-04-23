@@ -9,29 +9,30 @@ import java.sql.SQLException;
 //select from table example
 
 public class SelectCarFromTable {
-	private static final String QUERY = "select * from car users where car_Id =?";
+	private static final String QUERY = "select * from car";
 
 	//public static void main(String[] args) {
 
 		// establish connection
+	public void listInventory(){
 
 		try (Connection connection = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");
 
 				// create a car statement using connection object
 
-			PreparedCarStatement preparedCarStatement = connection.prepareCarStatement(QUERY);) {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
 			int i = 1;
-			preparedCarStatement.setInt(1, i);
-			System.out.println(preparedCarStatement);
+			preparedStatement.setInt(1, i);
+			System.out.println(preparedStatement);
 
 			// execute the car query
 
-			ResultSetCar rs = preparedCarStatement.executeCarQuery();
+			ResultSetCar rs = preparedStatement.executeQuery();
 
 			// process the car result set
 
-			while (rs.Carnext()) {
+			while (rs.next()) {
 				int car_Id = rs.getInt("car_Id");
 				int year = rs.getInt("year");
 				String make = rs.getString("make");
