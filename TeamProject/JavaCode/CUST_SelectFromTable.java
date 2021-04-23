@@ -15,7 +15,7 @@ public class SelectCustFromTable {
 
 		// establish connection
 
-		public void selectCustRecord() throws SQLException {
+		public void selectCustRecord(String list) throws SQLException {
 
 		try (Connection connection = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");

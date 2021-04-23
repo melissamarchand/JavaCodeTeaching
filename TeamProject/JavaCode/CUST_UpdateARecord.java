@@ -15,8 +15,9 @@ public class UpdateACustRecord {
 //		updateACustRecord.updateARecord();
 //	}
 
-	public void updateCustRecord() throws SQLException {
+	public void updateCustRecord(String update, String customer name, String email, String customer address, int phone number) throws SQLException {
 		System.out.println(UPDATE_CUSTOMER_USERS_SQL);
+
 
 		// establish a connection
 

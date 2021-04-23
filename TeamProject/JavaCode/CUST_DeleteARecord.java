@@ -15,7 +15,7 @@ public class DeleteACustRecord {
 	//	deleteARecord.deleteRecord();
 	//}
 
-	public void deleteCustRecord() throws SQLException {
+	public void deleteCustRecord(String delete) throws SQLException {
 		System.out.println(DELETE_CUST_USERS_SQL);
 
 		// establish connection

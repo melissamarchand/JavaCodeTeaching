@@ -67,8 +67,8 @@ gfbdfgbdfgnbdfgndfb
 
     private static void sellCar(){
         System.out.println("What car would you like to sell");
-        String response = sc.nextLine();
-        DeleteARecord.deleteRecord(response);
+        String sellCar = sc.nextLine();
+        DeleteARecord.deleteRecord(sellCar;
     }
 
     private static void updatePrice(){
@@ -81,40 +81,40 @@ gfbdfgbdfgnbdfgndfb
 
     private static void newCustomer(){
         System.out.println("What is the customer's name?");
-        String response1 = sc.nextLine(); 
+        String name = sc.nextLine(); 
         System.out.println("what is the customers email?");
-        String response2 = sc.nextLine(); 
+        String email = sc.nextLine(); 
         System.out.println("what is the customer's address?");
-        String response3 = sc.nextLine();
+        String address = sc.nextLine();
         System.out.println("What is the customers phone number?");
-        String response4 = sc.nextLine();
-        insertCustRecord(response1, response2, response3, response4);
+        String phone number = sc.nextLine();
+        insertCustRecord(name, email, address, phone number);
     }
 
     private static void updateCustomer(){
         System.out.println("What customer would you like to update?");
-        String response = sc.nextLine();
+        String update = sc.nextLine();
         System.out.println("What is the customer's name?");
-        String response1 = sc.nextLine();
+        String customer name = sc.nextLine();
         System.out.println("what is the customers email?");
-        String response2 = sc.nextLine();
+        String email = sc.nextLine();
         System.out.println("what is the customer's address?");
-        String response3 = sc.nextLine();
+        String customer address = sc.nextLine();
         System.out.println("What is the customers phone number?");
-        String response4 = sc.nextLine();
-        updateCustRecord(response, response1, response2, response3, response4);
+        String phone number = sc.nextLine();
+        updateCustRecord(update, customer name, email, customer address, phone number );
     }
 
     private static void deleteCustomer(){
         System.out.println("What customer would you like to delete?");
-        String response = sc.nextLine();
-        deleteCustRecord(response);
+        String delete = sc.nextLine();
+        deleteCustRecord(delete);
     }
 
     private static void listCustomer(){
         System.out.println("What customer would you like to list?");
-        String response = sc.nextLine();
-        ListCustRecord(response);
+        String list = sc.nextLine();
+        ListCustRecord(list);
     }
 
 }

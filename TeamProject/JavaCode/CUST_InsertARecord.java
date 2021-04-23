@@ -16,7 +16,7 @@ public class insertCustIntoTable {
 			//	createTableExample.insertRecord();
 			//}
 
-			public void insertCustRecord() throws SQLException {
+			public void insertCustRecord(String name, String email, String address, int phone number) throws SQLException {
 				System.out.println(INSERT_CUST_USERS_SQL);
 
 				// establishing a connection
