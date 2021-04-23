@@ -22,14 +22,14 @@ public class SelectCustFromTable {
 
 				// create a statement using connection object
 
-			PreparedCustStatement preparedCustStatement = connection.prepareCustStatement(QUERY);) {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
 			int i = 1;
-			preparedCustStatement.setInt(1, i);
-			System.out.println(preparedCustStatement);
+			preparedStatement.setInt(1, i);
+			System.out.println(preparedStatement);
 
 			// execute the query
 
-			ResultSetCust rs = preparedCustStatement.executeQuery();
+			ResultSetCust rs = preparedStatement.executeQuery();
 
 			// process the result set
 

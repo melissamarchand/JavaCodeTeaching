@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import SelectCarFromTable;
 public class Project{
 
 
@@ -77,7 +78,7 @@ public class Project{
     }
 
     private static void listCars(){
-        listInventory();
+        SelectCarFromTable.listInventory();
     }
 
     private static void newCustomer(){
@@ -88,22 +89,22 @@ public class Project{
         System.out.println("what is the customer's address?");
         String address = sc.nextLine();
         System.out.println("What is the customers phone number?");
-        String phone number = sc.nextLine();
-        insertCustRecord(name, email, address, phone number);
+        String phonenumber = sc.nextLine();
+        insertCustRecord(name, email, address, phonenumber);
     }
 
     private static void updateCustomer(){
         System.out.println("What customer would you like to update?");
         String update = sc.nextLine();
         System.out.println("What is the customer's name?");
-        String customer name = sc.nextLine();
+        String name = sc.nextLine();
         System.out.println("what is the customers email?");
         String email = sc.nextLine();
         System.out.println("what is the customer's address?");
-        String customer address = sc.nextLine();
+        String address = sc.nextLine();
         System.out.println("What is the customers phone number?");
-        String phone number = sc.nextLine();
-        updateCustRecord(update, customer name, email, customer address, phone number );
+        String phonenumber = sc.nextLine();
+        updateCustRecord(update, name, email, address, phonenumber );
     }
 
     private static void deleteCustomer(){
