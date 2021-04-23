@@ -9,7 +9,7 @@ public class Customers {
 	
 	
 	public Customers(int customer_id, String name, String address, 
-				string phone, string email) {
+				String phone, String email) {
 		this.setCustomer_Id(customer_id);
 		this.setName(name);
 		this.setAddress(address);
@@ -56,3 +56,4 @@ public class Customers {
 		this.email = email;
 	}
 }
+
