@@ -11,9 +11,11 @@ import java.sql.SQLException;
 public class SelectCustFromTable {
 	private static final String QUERY = "select * from customer users where customer_id =?";
 
-//	public static void main(String[] args) {
+	//public static void main(String[] args) {
 
 		// establish connection
+
+		public void selectCustRecord() throws SQLException {
 
 		try (Connection connection = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");

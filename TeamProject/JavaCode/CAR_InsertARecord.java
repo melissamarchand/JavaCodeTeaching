@@ -8,7 +8,7 @@ import java.sql.SQLException;
 //INSERT a record into "users" table.
 
 public class insertCarIntoTable {
-	private static final String INSERT_CAR_USERS_SQL = "INSERT INTO car users" + " (car_id, year, make, model, description, cost) VALUES "
+	private static final String INSERT_CAR_USERS_SQL = "INSERT INTO car users" + " (year, make, model, description, cost) VALUES "
 					+ "  (?, ?, ?, ?, ?, ?);";
 
 		//	public static void main(String[] args) throws SQLException {
@@ -16,7 +16,7 @@ public class insertCarIntoTable {
 		//		createTableExample.insertRecord();
 		//	}
 
-		public void insertCarRecord(String response, Int car_Id, Int year, String make, String model, String description, Double cost) throws SQLException {
+		public void insertCarRecord(Int year, String make, String model, String description, Double cost) throws SQLException {
 
 				System.out.println(INSERT_CAR_USERS_SQL);
 
