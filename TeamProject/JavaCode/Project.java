@@ -62,7 +62,7 @@ gfbdfgbdfgnbdfgndfb
         String description = sc.nextLine();
         System.out.println("what is the price of the car being bought?");
         Double price = sc.nextLine();
-        InsertCarRecord.deleteRecord(year, make, model, description, price);
+        CAR_SelectFromTable.insertCarRecord(year, make, model, description, price);
     }
 
     private static void sellCar(){

@@ -8,8 +8,8 @@ import java.sql.SQLException;
 //INSERT a record into "users" table.
 
 public class insertCarIntoTable {
-	private static final String INSERT_CAR_USERS_SQL = "INSERT INTO car users" + " (year, make, model, description, cost) VALUES "
-					+ "  (?, ?, ?, ?, ?, ?);";
+	private static final String INSERT_CAR_USERS_SQL = "INSERT INTO car" + " (year, make, model, description, cost) VALUES "
+					+ "  (?, ?, ?, ?, ?);";
 
 		//	public static void main(String[] args) throws SQLException {
 		//		insertIntoTable createTableExample = new insertIntoTable();
@@ -28,12 +28,11 @@ public class insertCarIntoTable {
 						// create a statement using connection object
 
 					PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CAR_USERS_SQL)) {
-					preparedStatement.setInt(1, car_Id);
-					preparedStatement.setInt(2, year);
-					preparedStatement.setString(3, make);
-					preparedStatement.setString(4, model);
-					preparedStatement.setString(5, description);
-					preparedStatement.setDouble(6, cost);
+					preparedStatement.setInt(1, year);
+					preparedStatement.setString(2, make);
+					preparedStatement.setString(3, model);
+					preparedStatement.setString(4, description);
+					preparedStatement.setDouble(5, cost);
 
 					System.out.println(preparedStatement);
 
