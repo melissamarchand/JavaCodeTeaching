@@ -67,7 +67,7 @@ public class Project{
     private static void sellCar(){
         System.out.println("What car would you like to sell");
         String sellCar = sc.nextLine();
-        DeleteARecord.deleteRecord(sellCar;
+        DeleteARecord.deleteRecord(sellCar);
     }
 
     private static void updatePrice(){
@@ -77,7 +77,7 @@ public class Project{
     }
 
     private static void listCars(){
-
+        listInventory();
     }
 
     private static void newCustomer(){

@@ -22,8 +22,6 @@ public class SelectCarFromTable {
 				// create a car statement using connection object
 
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
-			int i = 1;
-			preparedStatement.setInt(1, i);
 			System.out.println(preparedStatement);
 
 			// execute the car query
