@@ -19,7 +19,7 @@ public class UpdateACarRecord {
 		// establish a connection
 
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false",
-				"root", "");
+				"root", "Dolphins");
 
 // create a car statement using connection object
 			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CAR_SQL)) {

@@ -20,7 +20,7 @@ public class InsertACustRecord {
 				// establishing a connection
 
 				try (Connection connection = DriverManager
-						.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");
+						.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "Dolphins");
 
 						// create a statement using connection object
 

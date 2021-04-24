@@ -19,7 +19,7 @@ public class DeleteACarRecord {
 		// establish connection
 
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false",
-				"root", "");
+				"root", "Dolphins");
 
 				// create a statement using connection object
 

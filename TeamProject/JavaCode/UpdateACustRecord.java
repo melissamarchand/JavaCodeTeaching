@@ -13,14 +13,14 @@ public class UpdateACustRecord {
 //		updateARecord.updateARecord();
 //	}
 
-	public void updateCustRecord(Int customer_id, String name, String address, String phone, String email) throws SQLException {
+	public void updateCustRecord(int customer_id, String name, String address, String phone, String email) throws SQLException {
 		System.out.println(UPDATE_CUST_SQL);
 
 
 		// establish a connection
 
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false",
-				"root", "");
+				"root", "Dolphins");
 
 // create a statement using connection object
 			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUST_SQL)) {

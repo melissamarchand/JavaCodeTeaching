@@ -12,21 +12,21 @@ public class Project{
             String selection = sc.nextLine();
             switch(selection){
                 case "1": 
-                    buyCar(); break;
+                    buyCar(sc); break;
                 case "2": 
-                    sellCar();  break;
+                    sellCar(sc);  break;
                 case "3": 
-                    updatePrice(); break;
+                    updatePrice(sc); break;
                 case "4": 
                     listCars(); break;
                 case "5": 
-                    newCustomer(); break;
+                    newCustomer(sc); break;
                 case "6": 
-                    updateCustomer(); break;
+                    updateCustomer(sc); break;
                 case "7": 
-                    deleteCustomer(); break;
+                    deleteCustomer(sc); break;
                 case "8": 
-                    listCustomer(); break;
+                    listCustomer(sc); break;
                 case "9": 
                     loop = false; break;
                 default: 
@@ -51,9 +51,9 @@ public class Project{
         System.out.println("9: quit");
     }
 
-    private static void buyCar(){
+    private static void buyCar(Scanner sc){
         System.out.println("what is the year of the car being bought?");
-        int year = sc.nextLine();
+        int year = sc.nextInt();
         System.out.println("what is the make of the car being bought?");
         String make = sc.nextLine();
         System.out.println("what is the model of the car being bought?");
@@ -61,19 +61,19 @@ public class Project{
         System.out.println("what is the description of the car being bought?");
         String description = sc.nextLine();
         System.out.println("what is the price of the car being bought?");
-        Double price = sc.nextLine();
+        Double price = sc.nextDouble();
         InsertACarRecord.insertCarRecord(year, make, model, description, price);
     }
 
-    private static void sellCar(){
+    private static void sellCar(Scanner sc){
         System.out.println("What car would you like to sell");
-        int carId = sc.nextLine();
+        int carId = sc.nextInt();
         DeleteARecord.deleteRecord(carId);
     }
 
-    private static void updatePrice(){
+    private static void updatePrice(Scanner sc){
         System.out.println("What percent is the sale?");
-        int carId = sc.nextLine();
+        int carId = sc.nextInt();
         UpdateACarRecord.updateCarSale(carId);
     }
 
@@ -81,7 +81,7 @@ public class Project{
         SelectCarFromTable.listInventory();
     }
 
-    private static void newCustomer(){
+    private static void newCustomer(Scanner sc){
         System.out.println("What is the customer's name?");
         String name = sc.nextLine(); 
         System.out.println("what is the customers email?");
@@ -93,9 +93,9 @@ public class Project{
         InsertACustRecord.insertCustRecord(name, email, address, phonenumber);
     }
 
-    private static void updateCustomer(){
+    private static void updateCustomer(Scanner sc){
         System.out.println("What customer would you like to update?");
-        Int update = sc.nextLine();
+        int update = sc.nextInt();
         System.out.println("What is the customer's name?");
         String name = sc.nextLine();
         System.out.println("what is the customers email?");
@@ -107,15 +107,15 @@ public class Project{
         UpdateACustRecord.updateCustRecord(update, name, email, address, phonenumber);
     }
 
-    private static void deleteCustomer(){
+    private static void deleteCustomer(Scanner sc){
         System.out.println("What customer would you like to delete?");
-        int custId = sc.nextLine();
+        int custId = sc.nextInt();
        DeleteACustRecord.deleteCustRecord(custId);
     }
 
-    private static void listCustomer(){
+    private static void listCustomer(Scanner sc){
         System.out.println("What customer would you like to list?");
-        int custId = sc.nextLine();
+        int custId = sc.nextInt();
         SelectCustFromTable.ListCustRecord(custId);
     }
 

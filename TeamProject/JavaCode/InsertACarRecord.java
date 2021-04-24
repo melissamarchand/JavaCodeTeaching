@@ -14,14 +14,14 @@ public class InsertACarRecord {
 		//		createTableExample.insertRecord();
 		//	}
 
-		public void insertCarRecord(Int year, String make, String model, String description, Double cost) throws SQLException {
+		public void insertCarRecord(I=int year, String make, String model, String description, Double cost) throws SQLException {
 
 				System.out.println(INSERT_USERS_SQL);
 
 				// establishing a connection
 
 				try (Connection connection = DriverManager
-						.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");
+						.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "Dolphins");
 
 						// create a statement using connection object
 
