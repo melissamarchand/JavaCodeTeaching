@@ -24,11 +24,11 @@ public class DeleteACustRecord {
 
 				// create a statement using connection object
 
-				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUST_SQL)) {
+				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUST_SQL);) {
 			preparedStatement.setInt(1, cust_id);
 			// execute the query or update query
 
-			int result = preparedStatement.executeUpdate(DELETE_CUST_SQL);
+			int result = preparedStatement.executeUpdate();
 			System.out.println("Number of customer records affected :: " + result);
 		} catch (SQLException e) {
 
