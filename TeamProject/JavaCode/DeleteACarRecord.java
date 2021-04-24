@@ -1,23 +1,20 @@
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 // delete a car record
 
-public class DeleteARecord {
-	private static final String DELETE_USERS_SQL = "delete from users where id = ";
+public class DeleteACarRecord {
+	private static final String DELETE_CAR_SQL = "DELETE from CAR where id = ?;";
 
 	// public static void main(String[] args) throws SQLException {
 	// 	DeleteARecord deleteARecord = new DeleteARecord();
 	// 	deleteARecord.deleteRecord();
 	// }
 
-	public void deleteCarRecord(String record) throws SQLException {
-		String command = DELETE_USERS_SQL + record + ";";
-		System.out.println(command);
+	public void deleteCarRecord(int car_id) throws SQLException {
+		System.out.println(DELETE_CAR_SQL);
 
 		// establish connection
 
@@ -26,12 +23,12 @@ public class DeleteARecord {
 
 				// create a statement using connection object
 
-				Statement statement = connection.createStatement();) {
+				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CAR_SQL);) {
+					preparedStatement.setInt(1, car_id);
 
 			// execute the query or update query
 
-			int result = statement.executeQuery(command);
-			System.out.println("Number of car records affected :: " + result);
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 
 			// print SQL exception info:

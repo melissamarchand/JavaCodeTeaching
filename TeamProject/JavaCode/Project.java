@@ -62,19 +62,19 @@ public class Project{
         String description = sc.nextLine();
         System.out.println("what is the price of the car being bought?");
         Double price = sc.nextLine();
-        CAR_SelectFromTable.insertCarRecord(year, make, model, description, price);
+        InsertACarRecord.insertCarRecord(year, make, model, description, price);
     }
 
     private static void sellCar(){
         System.out.println("What car would you like to sell");
-        String sellCar = sc.nextLine();
-        DeleteARecord.deleteRecord(sellCar);
+        int carId = sc.nextLine();
+        DeleteARecord.deleteRecord(carId);
     }
 
     private static void updatePrice(){
         System.out.println("What percent is the sale?");
-        int sale = sc.nextLine();
-        updateCarSale(sale);
+        int carId = sc.nextLine();
+        UpdateACarRecord.updateCarSale(carId);
     }
 
     private static void listCars(){
@@ -90,12 +90,12 @@ public class Project{
         String address = sc.nextLine();
         System.out.println("What is the customers phone number?");
         String phonenumber = sc.nextLine();
-        insertCustRecord(name, email, address, phonenumber);
+        InsertACustRecord.insertCustRecord(name, email, address, phonenumber);
     }
 
     private static void updateCustomer(){
         System.out.println("What customer would you like to update?");
-        String update = sc.nextLine();
+        Int update = sc.nextLine();
         System.out.println("What is the customer's name?");
         String name = sc.nextLine();
         System.out.println("what is the customers email?");
@@ -104,19 +104,19 @@ public class Project{
         String address = sc.nextLine();
         System.out.println("What is the customers phone number?");
         String phonenumber = sc.nextLine();
-        updateCustRecord(update, name, email, address, phonenumber );
+        UpdateACustRecord.updateCustRecord(update, name, email, address, phonenumber);
     }
 
     private static void deleteCustomer(){
         System.out.println("What customer would you like to delete?");
-        String delete = sc.nextLine();
-        deleteCustRecord(delete);
+        int custId = sc.nextLine();
+       DeleteACustRecord.deleteCustRecord(custId);
     }
 
     private static void listCustomer(){
         System.out.println("What customer would you like to list?");
-        String list = sc.nextLine();
-        ListCustRecord(list);
+        int custId = sc.nextLine();
+        SelectCustFromTable.ListCustRecord(custId);
     }
 
 }

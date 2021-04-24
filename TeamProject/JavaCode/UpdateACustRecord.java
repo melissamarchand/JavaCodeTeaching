@@ -1,5 +1,3 @@
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,15 +6,15 @@ import java.sql.SQLException;
 // update a customer record
 public class UpdateACustRecord {
 
-	public static final String UPDATE_USERS_SQL = "update customer users set name = ? where customer_id = ?;";
+	public static final String UPDATE_CUST_SQL = "update customer set (name, address, phone, email) Values (?, ?, ?, ?) where customer_id = ?;";
 
 //	public static void main(String[] args) throws SQLException {
 //		UpdateARecord updateARecord = new UpdateARecord();
 //		updateARecord.updateARecord();
 //	}
 
-	public void updateACustRecord(Int customer_id, String name, String address, String phone, String email) throws SQLException {
-		System.out.println(UPDATE_USERS_SQL);
+	public void updateCustRecord(Int customer_id, String name, String address, String phone, String email) throws SQLException {
+		System.out.println(UPDATE_CUST_SQL);
 
 
 		// establish a connection
@@ -25,13 +23,14 @@ public class UpdateACustRecord {
 				"root", "");
 
 // create a statement using connection object
-			PreparedCustStatement preparedCustStatement = connection.prepareCustStatement(UPDATE_CUSTOMER_USERS_SQL)) {
-			preparedCustStatement.setInt(1, customer_id);
-			preparedCustStatement.setString(2, name);
-			preparedCustStatement.setString(3, address);
-			preparedCustStatement.setString(4, phone);
-			preparedCustStatement.setString(5, email);
+			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUST_SQL)) {
 
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, address);
+			preparedStatement.setString(3, phone);
+			preparedStatement.setString(4, email);
+			preparedStatement.setInt(5, customer_id);
+			
 			// execute query or update query
 
 			preparedCustStatement.executeUpdate();

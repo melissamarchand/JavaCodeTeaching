@@ -4,39 +4,38 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//select customer from table
+//select from table example
 
-public class SelectCustFromTable {
-	private static final String QUERY = "select * from customer users where customer_id =?";
+public class SelectCarFromTable {
+	private static final String QUERY = "select * from car";
 
 	//public static void main(String[] args) {
 
 		// establish connection
-
-		public void selectCustRecord(int cust_id) throws SQLException {
+	public void listInventory(){
 
 		try (Connection connection = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "");
 
-				// create a statement using connection object
+				// create a car statement using connection object
 
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
-			preparedStatement.setInt(1, cust_id);
 			System.out.println(preparedStatement);
 
-			// execute the query
+			// execute the car query
 
 			ResultSet rs = preparedStatement.executeQuery();
 
-			// process the result set
+			// process the car result set
 
 			while (rs.next()) {
-				int customer_id = rs.getInt("customer_id");
-				String name = rs.getString("name");
-				String address = rs.getString("address");
-				String phone = rs.getString("phone");
-				String email = rs.getString("email");
-				System.out.println(customer_id + "," + name + "," + address + "," + phone + "," + email);
+				int car_Id = rs.getInt("car_Id");
+				int year = rs.getInt("year");
+				String make = rs.getString("make");
+				String model = rs.getString("model");
+				String description = rs.getString("description");
+				Double cost = rs.getDouble("cost");
+				System.out.println(car_Id + "," + year + "," + make + "," + model + "," + description + "," + cost);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);

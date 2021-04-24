@@ -1,23 +1,22 @@
-package InsertCustIntoTable;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-//INSERT a customer record into cust "users" table.
+//INSERT a record into "users" table.
 
-public class insertCustIntoTable {
-	private static final String INSERT_CUST_USERS_SQL = "INSERT INTO customer users" + " (customer_id, name, address, phone, email) VALUES "
+public class InsertACarRecord {
+	private static final String INSERT_USERS_SQL = "INSERT INTO car" + " (year, make, model, description, cost) VALUES "
 					+ "  (?, ?, ?, ?, ?);";
 
-			//public static void main(String[] args) throws SQLException {
-			//	insertIntoTable createTableExample = new insertIntoTable();
-			//	createTableExample.insertRecord();
-			//}
+		//	public static void main(String[] args) throws SQLException {
+		//		insertIntoTable createTableExample = new insertIntoTable();
+		//		createTableExample.insertRecord();
+		//	}
 
-			public void insertCustRecord(String name, String email, String address, int phone number) throws SQLException {
-				System.out.println(INSERT_CUST_USERS_SQL);
+		public void insertCarRecord(Int year, String make, String model, String description, Double cost) throws SQLException {
+
+				System.out.println(INSERT_USERS_SQL);
 
 				// establishing a connection
 
@@ -26,21 +25,21 @@ public class insertCustIntoTable {
 
 						// create a statement using connection object
 
-						PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-					preparedStatement.setInt(1, customer_id);
-					preparedStatement.setString(2, name);
-					preparedStatement.setString(3, address);
-					preparedStatement.setString(4, phone);
-					preparedStatement.setString(5, email);
+					PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
+					preparedStatement.setInt(1, year);
+					preparedStatement.setString(2, make);
+					preparedStatement.setString(3, model);
+					preparedStatement.setString(4, description);
+					preparedStatement.setDouble(5, cost);
 
-					System.out.println(preparedCustStatement);
+					System.out.println(preparedStatement);
 
 					// execute the query or update query
 
-					preparedCustStatement.executeCustUpdate();
+					preparedStatement.executeUpdate();
 				} catch (SQLException e) {
 
-					// print cust SQL exception info
+					// print SQL exception info
 
 					printSQLException(e);
 				}

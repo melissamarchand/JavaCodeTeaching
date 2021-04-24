@@ -1,24 +1,21 @@
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-//INSERT a record into "users" table.
+//INSERT a customer record into cust "users" table.
 
-public class insertIntoTable {
-	private static final String INSERT_USERS_SQL = "INSERT INTO car" + " (year, make, model, description, cost) VALUES "
-					+ "  (?, ?, ?, ?, ?);";
+public class InsertACustRecord {
+	private static final String INSERT_CUST_SQL = "INSERT INTO customer users" + " (name, address, phone, email) VALUES "
+					+ "  (?, ?, ?, ?);";
 
-		//	public static void main(String[] args) throws SQLException {
-		//		insertIntoTable createTableExample = new insertIntoTable();
-		//		createTableExample.insertRecord();
-		//	}
+			//public static void main(String[] args) throws SQLException {
+			//	insertIntoTable createTableExample = new insertIntoTable();
+			//	createTableExample.insertRecord();
+			//}
 
-		public void insertRecord(Int year, String make, String model, String description, Double cost) throws SQLException {
-
-				System.out.println(INSERT_USERS_SQL);
+			public void insertCustRecord(String name, String email, String address, String phone) throws SQLException {
+				System.out.println(INSERT_CUST_SQL);
 
 				// establishing a connection
 
@@ -27,12 +24,11 @@ public class insertIntoTable {
 
 						// create a statement using connection object
 
-					PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-					preparedStatement.setInt(1, year);
-					preparedStatement.setString(2, make);
-					preparedStatement.setString(3, model);
-					preparedStatement.setString(4, description);
-					preparedStatement.setDouble(5, cost);
+						PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUST_SQL)) {
+					preparedStatement.setString(1, name);
+					preparedStatement.setString(2, address);
+					preparedStatement.setString(3, phone);
+					preparedStatement.setString(4, email);
 
 					System.out.println(preparedStatement);
 
@@ -41,7 +37,7 @@ public class insertIntoTable {
 					preparedStatement.executeUpdate();
 				} catch (SQLException e) {
 
-					// print SQL exception info
+					// print cust SQL exception info
 
 					printSQLException(e);
 				}

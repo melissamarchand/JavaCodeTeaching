@@ -1,20 +1,20 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedCarStatement;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 // update a car record
 public class UpdateACarRecord {
 
-	public static final String UPDATE_CAR_USERS_SQL = "update car set price = price * (100 - ? ) / 100;";
+	public static final String UPDATE_CAR_SQL = "update car set price = price * (100 - ? ) / 100;";
 
 	//public static void main(String[] args) throws SQLException {
 	//	UpdateARecord updateARecord = new UpdateARecord();
 	//	updateARecord.updateRecord();
 	//}
 
-	public void updateCarSale(int sale) throws SQLException {
-		System.out.println(UPDATE_CAR_USERS_SQL);
+	public void updateCarSale(int carId) throws SQLException {
+		System.out.println(UPDATE_CAR_SQL);
 
 		// establish a connection
 
@@ -22,12 +22,12 @@ public class UpdateACarRecord {
 				"root", "");
 
 // create a car statement using connection object
-			PreparedCarStatement preparedCarStatement = connection.prepareStatement(UPDATE_CAR_USERS_SQL)) {
-			preparedCarStatement.setInt(1, sale);
+			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CAR_SQL)) {
+			preparedStatement.setInt(1, carId);
 
 			// execute query or update query
 
-			preparedCarStatement.executeUpdate();
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 
 			// print SQLException info
