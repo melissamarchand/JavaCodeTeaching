@@ -1,4 +1,4 @@
-package InsertCarIntoTable;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 //select from table example
 
-public class SelectCarFromTable {
+public class SelectFromTable {
 	private static final String QUERY = "select * from car";
 
 	//public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class SelectCarFromTable {
 
 			// execute the car query
 
-			ResultSetCar rs = preparedStatement.executeQuery();
+			ResultSet rs = preparedStatement.executeQuery();
 
 			// process the car result set
 

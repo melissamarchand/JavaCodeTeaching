@@ -1,4 +1,4 @@
-package InsertCarIntoTable;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 //INSERT a record into "users" table.
 
-public class insertCarIntoTable {
-	private static final String INSERT_CAR_USERS_SQL = "INSERT INTO car" + " (year, make, model, description, cost) VALUES "
+public class insertIntoTable {
+	private static final String INSERT_USERS_SQL = "INSERT INTO car" + " (year, make, model, description, cost) VALUES "
 					+ "  (?, ?, ?, ?, ?);";
 
 		//	public static void main(String[] args) throws SQLException {
@@ -16,9 +16,9 @@ public class insertCarIntoTable {
 		//		createTableExample.insertRecord();
 		//	}
 
-		public void insertCarRecord(Int year, String make, String model, String description, Double cost) throws SQLException {
+		public void insertRecord(Int year, String make, String model, String description, Double cost) throws SQLException {
 
-				System.out.println(INSERT_CAR_USERS_SQL);
+				System.out.println(INSERT_USERS_SQL);
 
 				// establishing a connection
 
@@ -27,7 +27,7 @@ public class insertCarIntoTable {
 
 						// create a statement using connection object
 
-					PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CAR_USERS_SQL)) {
+					PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
 					preparedStatement.setInt(1, year);
 					preparedStatement.setString(2, make);
 					preparedStatement.setString(3, model);

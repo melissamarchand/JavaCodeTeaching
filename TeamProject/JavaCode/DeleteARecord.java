@@ -1,4 +1,4 @@
-package DeleteACarRecord;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +7,8 @@ import java.sql.Statement;
 
 // delete a car record
 
-public class DeleteACarRecord {
-	private static final String DELETE_CAR_USERS_SQL = "delete from users where id = ";
+public class DeleteARecord {
+	private static final String DELETE_USERS_SQL = "delete from users where id = ";
 
 	// public static void main(String[] args) throws SQLException {
 	// 	DeleteARecord deleteARecord = new DeleteARecord();
@@ -16,7 +16,7 @@ public class DeleteACarRecord {
 	// }
 
 	public void deleteCarRecord(String record) throws SQLException {
-		String command = DELETE_CAR_USERS_SQL + record + ";";
+		String command = DELETE_USERS_SQL + record + ";";
 		System.out.println(command);
 
 		// establish connection

@@ -1,4 +1,4 @@
-package UpdateACustRecord;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,15 +8,15 @@ import java.sql.SQLException;
 // update a customer record
 public class UpdateACustRecord {
 
-	public static final String UPDATE_CUSTOMER_USERS_SQL = "update customer users set name = ? where customer_id = ?;";
+	public static final String UPDATE_USERS_SQL = "update customer users set name = ? where customer_id = ?;";
 
 //	public static void main(String[] args) throws SQLException {
-//		UpdateACustRecord updateARecord = new UpdateACustRecord();
-//		updateACustRecord.updateARecord();
+//		UpdateARecord updateARecord = new UpdateARecord();
+//		updateARecord.updateARecord();
 //	}
 
-	public void updateCustRecord(String update, String customer name, String email, String customer address, int phone number) throws SQLException {
-		System.out.println(UPDATE_CUSTOMER_USERS_SQL);
+	public void updateACustRecord(Int customer_id, String name, String address, String phone, String email) throws SQLException {
+		System.out.println(UPDATE_USERS_SQL);
 
 
 		// establish a connection
