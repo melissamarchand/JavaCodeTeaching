@@ -1,29 +1,31 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 // delete a cust record
 
 public class DeleteACustRecord {
-	private static final String DELETE_CUST_SQL = "delete from customer where customer_id = ?;";
+	private static final String DELETE_CUST_SQL = "DELETE FROM customers where customer_id = ?;";
 
-	//public static void main(String[] args) throws SQLException {
-	//	DeleteARecord deleteARecord = new DeleteARecord();
-	//	deleteARecord.deleteRecord();
-	//}
+	// public static void main(String[] args) throws SQLException {
+	// DeleteARecord deleteARecord = new DeleteARecord();
+	// deleteARecord.deleteRecord();
+	// }
 
-	public void deleteCustRecord(int cust_id) throws SQLException {
+	public static void deleteCustRecord(int cust_id) throws SQLException {
 		System.out.println(DELETE_CUST_SQL);
 
 		// establish connection
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false",
-				"root", "Dolphins");
+		try (
+				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
+						"root", "Dolphins");
 
 				// create a statement using connection object
 
-				PreparedStatement preparedStatement = connection.PrepareStatement(DELETE_CUST_SQL);) {
-				preparedStatement.setInt(1, cust_id);
+				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUST_SQL)) {
+			preparedStatement.setInt(1, cust_id);
 			// execute the query or update query
 
 			int result = preparedStatement.executeUpdate(DELETE_CUST_SQL);

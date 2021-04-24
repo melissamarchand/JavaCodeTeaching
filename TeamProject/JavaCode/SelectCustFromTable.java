@@ -7,20 +7,21 @@ import java.sql.SQLException;
 //select customer from table
 
 public class SelectCustFromTable {
-	private static final String QUERY = "select * from customer users where customer_id =?";
+	private static final String QUERY = "select * from customers where customer_id =?";
 
-	//public static void main(String[] args) {
+	// public static void main(String[] args) {
 
-		// establish connection
+	// establish connection
 
-	public void selectCustRecord(int cust_id) throws SQLException {
+	public static void selectCustRecord(int cust_id) throws SQLException {
 
-		try (Connection connection = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "Dolphins");
+		try (
+				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
+						"root", "Dolphins");
 
 				// create a statement using connection object
 
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
+				PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
 			preparedStatement.setInt(1, cust_id);
 			System.out.println(preparedStatement);
 

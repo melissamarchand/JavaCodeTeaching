@@ -6,25 +6,26 @@ import java.sql.SQLException;
 // delete a car record
 
 public class DeleteACarRecord {
-	private static final String DELETE_CAR_SQL = "DELETE from CAR where id = ?;";
+	private static final String DELETE_CAR_SQL = "DELETE FROM cars where car_id = ?;";
 
 	// public static void main(String[] args) throws SQLException {
-	// 	DeleteARecord deleteARecord = new DeleteARecord();
-	// 	deleteARecord.deleteRecord();
+	// DeleteARecord deleteARecord = new DeleteARecord();
+	// deleteARecord.deleteRecord();
 	// }
 
-	public void deleteCarRecord(int car_id) throws SQLException {
+	public static void deleteCarRecord(int car_id) throws SQLException {
 		System.out.println(DELETE_CAR_SQL);
 
 		// establish connection
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false",
-				"root", "Dolphins");
+		try (
+				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
+						"root", "Dolphins");
 
 				// create a statement using connection object
 
 				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CAR_SQL);) {
-					preparedStatement.setInt(1, car_id);
+			preparedStatement.setInt(1, car_id);
 
 			// execute the query or update query
 
@@ -32,7 +33,7 @@ public class DeleteACarRecord {
 		} catch (SQLException e) {
 
 			// print SQL exception info:
-			printCarSQLException(e);
+			printSQLException(e);
 		}
 		// try-with-resource statement will auto close the connection.
 

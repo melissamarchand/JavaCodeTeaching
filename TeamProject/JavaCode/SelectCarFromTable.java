@@ -7,19 +7,20 @@ import java.sql.SQLException;
 //select from table example
 
 public class SelectCarFromTable {
-	private static final String QUERY = "select * from car";
+	private static final String QUERY = "select * from cars";
 
-	//public static void main(String[] args) {
+	// public static void main(String[] args) {
 
-		// establish connection
-	public void listInventory(){
+	// establish connection
+	public static void listInventory() {
 
-		try (Connection connection = DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false", "root", "Dolphins");
+		try (
+				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
+						"root", "Dolphins");
 
 				// create a car statement using connection object
 
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
+				PreparedStatement preparedStatement = connection.prepareStatement(QUERY);) {
 			System.out.println(preparedStatement);
 
 			// execute the car query
@@ -35,7 +36,7 @@ public class SelectCarFromTable {
 				String model = rs.getString("model");
 				String description = rs.getString("description");
 				Double cost = rs.getDouble("cost");
-				System.out.println(car_Id + "," + year + "," + make + "," + model + "," + description + "," + cost);
+				System.out.println(car_Id + ", " + year + ", " + make + ", " + model + ", " + description + ", " + cost);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);

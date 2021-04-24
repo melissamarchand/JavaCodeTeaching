@@ -6,23 +6,24 @@ import java.sql.SQLException;
 // update a car record
 public class UpdateACarRecord {
 
-	public static final String UPDATE_CAR_SQL = "update car set price = price * (100 - ? ) / 100;";
+	public static final String UPDATE_CAR_SQL = "update cars SET cost = cost * (100 - ? ) / 100;";
 
-	//public static void main(String[] args) throws SQLException {
-	//	UpdateARecord updateARecord = new UpdateARecord();
-	//	updateARecord.updateRecord();
-	//}
+	// public static void main(String[] args) throws SQLException {
+	// UpdateARecord updateARecord = new UpdateARecord();
+	// updateARecord.updateRecord();
+	// }
 
-	public void updateCarSale(int carId) throws SQLException {
+	public static void updateCarSale(int carId) throws SQLException {
 		System.out.println(UPDATE_CAR_SQL);
 
 		// establish a connection
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees?useSSL=false",
-				"root", "Dolphins");
+		try (
+				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
+						"root", "Dolphins");
 
-// create a car statement using connection object
-			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CAR_SQL)) {
+				// create a car statement using connection object
+				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CAR_SQL)) {
 			preparedStatement.setInt(1, carId);
 
 			// execute query or update query
@@ -33,7 +34,7 @@ public class UpdateACarRecord {
 			// print SQLException info
 			printSQLException(e);
 		}
-// try-with-resource statement will auto close the connection.
+		// try-with-resource statement will auto close the connection.
 	}
 
 	public static void printSQLException(SQLException ex) {
