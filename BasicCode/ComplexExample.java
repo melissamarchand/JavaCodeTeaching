@@ -1,6 +1,5 @@
 package BasicCode;
 
-
 //Base class
 class Box{
 
