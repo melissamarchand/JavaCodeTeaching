@@ -51,7 +51,7 @@ class Box2{
 
 
     //Setter methods
-    private void setWidth(int width){this.width = width;}
+    public void setWidth(int width){this.width = width;}
     public void setLenght(int lenght){this.lenght = lenght;}
     public void setHeight(int height){this.height = height;}
 
