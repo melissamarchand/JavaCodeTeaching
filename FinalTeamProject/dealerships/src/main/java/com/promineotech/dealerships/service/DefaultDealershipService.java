@@ -14,8 +14,13 @@ public class DefaultDealershipService implements DealershipService{
     @Autowired
     private CustomerDao customerDao;
 
-    List<Customer> ListCustomers(){
-        List<Customer> customers = customerDao.ListAllCustomers();
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    List<Customer> listCustomers(){
+        List<Customer> customers = customerDao.listAllCustomers();
+        int num = customers.length();
+        System.out.print(num)
         return customers;
     }
 
