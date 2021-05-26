@@ -3,6 +3,7 @@ package com.promineotech.dealerships.controller;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Transaction;
 import com.promineotech.dealerships.service.DealershipService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,31 @@ public class DefaultDealershipController implements DealershipController{
 
     public void updateCustomer(int customer_id, String name, String address, String phone){
         dealershipService.updateCustomer(customer_id, name, address, phone);
+    }
+
+    @Override
+    public ResponseEntity<List<Transaction>> getTransactions(int transactionID) {
+        List<Transaction> transactions = dealershipService.getTransactions(transactionID);
+        return new ResponseEntity<List<Transaction>>(transactions, HttpStatus.OK);
+        
+    }
+
+    @Override
+    public void deleteTransaction(int transactionID) {
+        dealershipService.deleteTransaction(transactionID);
+        
+    }
+
+    @Override
+    public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeNum, int dealershipID,
+            String date) {
+        dealershipService.updateTransaction(transactionID, vehicleID, customerID, employeeNum, dealershipID, date);
+        
+    }
+
+    @Override
+    public void newTransaction(int vehicleID, int customerID, int employeeNum, int dealershipID, String date) {
+       dealershipService.newTransaction(vehicleID, customerID, employeeNum, dealershipID, date);
+        
     }
 }

@@ -59,7 +59,7 @@ public class CustomerDao {
                 preparedStatement.setString(1, name);
                 preparedStatement.setString(2, address);
                 preparedStatement.setString(3, phone);
-                preparedStatement.setInt(5, customer_id);
+                preparedStatement.setInt(4, customer_id);
 
 			    // execute the car query
 			    preparedStatement.executeQuery();

@@ -1,8 +1,17 @@
 package com.promineotech.dealerships.entity;
 
-public class Customer {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public Customer(int customer_id, String name, String address, String phone) {
-    }
-    
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Customer {
+    private int customer_id;
+    private String name;
+    private String address;
+    private String phone;    
 }
