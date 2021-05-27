@@ -47,15 +47,15 @@ public class DefaultDealershipController implements DealershipController{
     }
 
     @Override
-    public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeNum, int dealershipID,
+    public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeID, int locationID,
             String date) {
-        dealershipService.updateTransaction(transactionID, vehicleID, customerID, employeeNum, dealershipID, date);
+        dealershipService.updateTransaction(transactionID, vehicleID, customerID, employeeID, locationID, date);
         
     }
 
     @Override
-    public void newTransaction(int vehicleID, int customerID, int employeeNum, int dealershipID, String date) {
-       dealershipService.newTransaction(vehicleID, customerID, employeeNum, dealershipID, date);
+    public void newTransaction(int vehicleID, int customerID, int employeeID, int locationID, String date) {
+       dealershipService.newTransaction(vehicleID, customerID, employeeID, locationID, date);
         
     }
 }

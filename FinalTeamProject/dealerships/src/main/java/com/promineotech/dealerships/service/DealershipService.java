@@ -15,9 +15,9 @@ public interface DealershipService {
 
     public void deleteTransaction(int transactionID);
 
-    public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeNum, int dealershipID, String date);
+    public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeID, int locationID, String date);
 
-    public void newTransaction(int vehicleID, int customerID, int employeeNum, int dealershipID, 
+    public void newTransaction(int vehicleID, int customerID, int employeeID, int locationID, 
             String date);
     
 }

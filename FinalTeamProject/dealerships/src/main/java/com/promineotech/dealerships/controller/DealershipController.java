@@ -47,8 +47,8 @@ public interface DealershipController {
     void newTransaction( 
         @RequestParam(required = true) int vehicleID, 
         @RequestParam(required = true) int customerID, 
-        @RequestParam(required = true) int employeeNum, 
-        @RequestParam(required = true) int dealershipID, 
+        @RequestParam(required = true) int employeeID, 
+        @RequestParam(required = true) int locationID, 
         @RequestParam(required = true) String date);
 
     @PutMapping("Transactions")
@@ -57,7 +57,7 @@ public interface DealershipController {
         @RequestParam(required = true) int transactionID, 
         @RequestParam(required = false) int vehicleID, 
         @RequestParam(required = false) int customerID, 
-        @RequestParam(required = false) int employeeNum, 
-        @RequestParam(required = false) int dealershipID, 
+        @RequestParam(required = false) int employeeID, 
+        @RequestParam(required = false) int locationID, 
         @RequestParam(required = false) String date);
 }

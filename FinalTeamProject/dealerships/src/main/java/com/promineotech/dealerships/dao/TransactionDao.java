@@ -13,7 +13,7 @@ import com.promineotech.dealerships.entity.Transaction;
 public class TransactionDao {
     
         public List<Transaction> getTransaction(Integer transactionID){
-            final String getTransaction = "SELECT * FROM transactions where transaction_id = ?";
+            final String getTransaction = "SELECT * FROM transactions where transactionID = ?";
 
             try (
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
@@ -28,13 +28,13 @@ public class TransactionDao {
                 ResultSet rs = preparedStatement.executeQuery();
                 List<Transaction> list = new ArrayList<>();
                 while (rs.next()) {
-                    int transaction_id = rs.getInt("transaction_id");
+                    int transaction_id = rs.getInt("transactionID");
                     int vehicleID = rs.getInt("vehicleID");
                     int customerID = rs.getInt("customerID");
-                    int employeeNum = rs.getInt("employeeNum");
-                    int dealershipID = rs.getInt("dealershipID");
+                    int employeeID = rs.getInt("employeeID");
+                    int locationID = rs.getInt("locationID");
                     String date = rs.getString("date");
-                    Transaction transaction = new Transaction(transaction_id, vehicleID, customerID, employeeNum, dealershipID, date);
+                    Transaction transaction = new Transaction(transaction_id, vehicleID, customerID, employeeID, locationID, date);
                     list.add(transaction);
                 }
                 return list;
@@ -45,10 +45,10 @@ public class TransactionDao {
         }
 
         
-        public void newTransaction(int vehicleID, int customerID, int employeeNum, int dealershipID, 
+        public void newTransaction(int vehicleID, int customerID, int employeeID, int locationID, 
             String date) {
              
-            final String updateTransaction = "INSERT into transactions (vehicleID, customerID, employeeNum, dealershipID, date)" +
+            final String updateTransaction = "INSERT into transactions (vehicleID, customerID, employeeID, locationID, date)" +
                 "Values (?, ?, ?, ?, ?);";
     
             // establish a connection
@@ -61,8 +61,8 @@ public class TransactionDao {
                     PreparedStatement preparedStatement = connection.prepareStatement(updateTransaction)) {
                         preparedStatement.setInt(1, vehicleID);
                         preparedStatement.setInt(2, customerID);
-                        preparedStatement.setInt(3, employeeNum);
-                        preparedStatement.setInt(4, dealershipID);
+                        preparedStatement.setInt(3, employeeID);
+                        preparedStatement.setInt(4, locationID);
                         preparedStatement.setString(5, date);
     
                 // execute query or update query
@@ -76,10 +76,10 @@ public class TransactionDao {
         }
 
 
-        public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeNum, int dealershipID, 
+        public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeID, int locationID, 
             String date) {
              
-            final String updateTransaction = "update transactions set vehicleID = ?, customerID = ? , employeeNum = ?, dealershipID = ?, date = ? where transactionID = ?;";
+            final String updateTransaction = "update transactions set vehicleID = ?, customerID = ? , employeeID = ?, locationID = ?, date = ? where transactionID = ?;";
     
             // establish a connection
     
@@ -91,8 +91,8 @@ public class TransactionDao {
                     PreparedStatement preparedStatement = connection.prepareStatement(updateTransaction)) {
                         preparedStatement.setInt(1, vehicleID);
                         preparedStatement.setInt(2, customerID);
-                        preparedStatement.setInt(3, employeeNum);
-                        preparedStatement.setInt(4, dealershipID);
+                        preparedStatement.setInt(3, employeeID);
+                        preparedStatement.setInt(4, locationID);
                         preparedStatement.setString(5, date);
                         preparedStatement.setInt(6, transactionID);
     

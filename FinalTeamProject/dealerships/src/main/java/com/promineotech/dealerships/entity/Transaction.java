@@ -13,7 +13,7 @@ public class Transaction {
     private int transactionID;
     private int vehicleID;
     private int customerID;
-    private int employeeNum;
-    private int dealershipID;
+    private int employeeID;
+    private int locationID;
     private String dateStamp;
 }
