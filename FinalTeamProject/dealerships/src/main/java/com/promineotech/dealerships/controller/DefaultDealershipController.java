@@ -33,6 +33,11 @@ public class DefaultDealershipController implements DealershipController{
         dealershipService.updateCustomer(customer_id, name, address, phone);
     }
 
+    // Delete operation on customers table
+    public void deleteCustomer(int customer_id, String name, String address, String phone){
+        dealershipService.deleteCustomer(customer_id, name, address, phone);
+    }
+
     @Override
     public ResponseEntity<List<Transaction>> getTransactions(int transactionID) {
         List<Transaction> transactions = dealershipService.getTransactions(transactionID);
