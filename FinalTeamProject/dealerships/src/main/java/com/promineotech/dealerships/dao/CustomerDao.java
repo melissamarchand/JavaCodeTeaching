@@ -70,6 +70,34 @@ public class CustomerDao {
             
     }
 
+	// Delete Operation for Customers Table
+    
+    public void deleteCustomer(int customerID, String name, String address, String phone) {
+        final String sql = "delete customer, confirm name = ?, address = ? , phone = ?, where customerID = ?;";
+
+        try (
+				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
+						"", "");
+
+				// create a customer delete statement using connection object
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ) {
+
+                preparedStatement.setString(1, name);
+                preparedStatement.setString(2, address);
+                preparedStatement.setString(3, phone);
+                preparedStatement.setInt(4, customerID);
+
+			    // execute the car query
+			    preparedStatement.executeQuery();
+            
+        } catch (SQLException e) {
+			printSQLException(e);
+		} 
+            
+    }
+
+
 
 
     public static void printSQLException(SQLException ex) {

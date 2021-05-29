@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public interface DealershipController {
     
 
+    /**
+     * Customer Handlers
+     * @return
+     */
     @GetMapping("Customers")
     ResponseEntity<List<Customer>> listCustomers();
 
@@ -30,6 +34,21 @@ public interface DealershipController {
         @RequestParam(required = false) String address, 
         @RequestParam(required = false) String phone);
 
+
+    // Delete operation on customers table
+    @DeleteMapping("Customers")
+    @ResponseStatus(code = HttpStatus.OK)
+    void deleteCustomer(
+        @RequestParam(required = true) int customer_id, 
+        @RequestParam(required = false) String name,
+        @RequestParam(required = false) String address, 
+        @RequestParam(required = false) String phone);
+
+    /**
+     * Transaction handelers 
+     * @param transactionID
+     * @return
+     */
     @GetMapping("Transactions")
     @ResponseStatus(code = HttpStatus.OK)
     ResponseEntity<List<Transaction>> getTransactions(
