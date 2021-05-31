@@ -15,8 +15,8 @@ CREATE TABLE customers (
 create table dealerships ();
 CREATE TABLE vehicles (
   vehicleID int (10) NOT NULL AUTO_INCREMENT,
-  locationID int (10) NOT NULL AUTO_INCREMENT,
-  is_sold boolean NOT NULL,
+  locationID int (10) NOT NULL,
+  is_sold bit NOT NULL,
   price decimal(9, 2) NOT NULL,
   model varchar(40) NOT NULL,
   make varchar(40) NOT NULL,
