@@ -44,7 +44,32 @@ public class CustomerDao {
 		} 
             
     }
+    // Insert operation for customers table
+    public void newCustomer(int customer_id, String name, String address, String phone) {
+        final String sql = "insert into customers add name = ?, address = ? , phone = ?, where customer_id = ?;";
 
+        try (
+				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
+						"root", "Dolphins");
+
+				// create a car statement using connection object
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ) {
+
+                preparedStatement.setString(1, name);
+                preparedStatement.setString(2, address);
+                preparedStatement.setString(3, phone);
+                preparedStatement.setInt(4, customer_id);
+
+			    // execute the car query
+			    preparedStatement.executeQuery();
+            
+        } catch (SQLException e) {
+			printSQLException(e);
+		} 
+            
+    }
+    
     public void updateCustomer(int customer_id, String name, String address, String phone) {
         final String sql = "update customers set name = ?, address = ? , phone = ?, where customer_id = ?;";
 

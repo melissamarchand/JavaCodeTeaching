@@ -34,6 +34,12 @@ public class DefaultDealershipService implements DealershipService{
     public List<Customer> listCustomers(){
         return customerDao.listAllCustomers();
     }
+   
+	@Override
+    public void newCustomer(int customerID, String name, String address, String phone) {
+        customerDao.newCustomer(customerID, name, address, phone);        
+    }
+
 
     public void updateCustomer(int customer_id, String name, String address, String phone){
         customerDao.updateCustomer(customer_id, name, address, phone);

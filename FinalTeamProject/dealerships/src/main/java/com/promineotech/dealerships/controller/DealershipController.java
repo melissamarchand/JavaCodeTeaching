@@ -25,6 +25,15 @@ public interface DealershipController {
      */
     @GetMapping("Customers")
     ResponseEntity<List<Customer>> listCustomers();
+    
+    // Insert customer
+    @PutMapping("Customers")
+    @ResponseStatus(code = HttpStatus.OK)
+    void newCustomer(
+        @RequestParam(required = true) int customer_id, 
+        @RequestParam(required = false) String name,
+        @RequestParam(required = false) String address, 
+        @RequestParam(required = false) String phone);
 
     @PutMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)

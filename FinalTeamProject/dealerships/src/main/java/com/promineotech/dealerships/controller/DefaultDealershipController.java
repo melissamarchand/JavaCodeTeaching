@@ -28,6 +28,13 @@ public class DefaultDealershipController implements DealershipController{
         List<Customer> customers = dealershipService.listCustomers();
         return new ResponseEntity<List<Customer>>(customers, HttpStatus.OK);
     }
+    
+    
+    // Insert operation on customers table
+    @Override
+    public void newCustomer(int customer_id, String name, String address, String phone){
+        dealershipService.newCustomer(customer_id, name, address, phone);
+    }
 
     public void updateCustomer(int customer_id, String name, String address, String phone){
         dealershipService.updateCustomer(customer_id, name, address, phone);
