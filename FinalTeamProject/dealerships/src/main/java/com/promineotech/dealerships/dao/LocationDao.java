@@ -14,7 +14,7 @@ import com.promineotech.dealerships.entity.Location;
 public class LocationDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Dolphins";
+    private static final String PASSWORD = "";
 	
 	//getLocation method- get a location by id
     public List<Location> getLocation(Integer locationID){
