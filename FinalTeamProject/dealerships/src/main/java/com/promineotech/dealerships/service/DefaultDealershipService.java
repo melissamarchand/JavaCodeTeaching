@@ -8,7 +8,9 @@ import com.promineotech.dealerships.dao.EmployeeDao;
 import com.promineotech.dealerships.dao.TransactionDao;
 import com.promineotech.dealerships.dao.VehicleDao;
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
+import com.sun.tools.javac.file.Locations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +25,16 @@ public class DefaultDealershipService implements DealershipService{
     private EmployeeDao employeeDao;
 
     @Autowired
-    private LocationDao dealeshipDao;
+    private LocationDao locationDao;
 
     @Autowired
     private TransactionDao transactionDao;
 
     @Autowired
     private VehicleDao vehicleDao;
+    
+    //==========================Customers===============================================
+
 
     public List<Customer> listCustomers(){
         return customerDao.listAllCustomers();
@@ -45,6 +50,8 @@ public class DefaultDealershipService implements DealershipService{
         customerDao.updateCustomer(customer_id, name, address, phone);
     }
 
+    //==========================Transactions===============================================
+
     public List<Transaction> getTransactions(int transactionID){
        return transactionDao.getTransaction(transactionID);
     }
@@ -58,7 +65,6 @@ public class DefaultDealershipService implements DealershipService{
     public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeID, int locationID,
             String date) {
         transactionDao.updateTransaction(transactionID, vehicleID, customerID, employeeID, locationID, date);
-        
     }
 
     @Override
@@ -67,4 +73,30 @@ public class DefaultDealershipService implements DealershipService{
         transactionDao.newTransaction(vehicleID, customerID, employeeID, locationID, date);        
     }
 
-}
+
+//==========================Locations===============================================
+    
+public List<Location> getLocation(int locationID){
+    return locationDao.getLocation(locationID);
+ }
+
+ @Override
+ public void deleteLocation(int locationID) {
+	 locationDao.deleteLocation(locationID);
+ }
+
+ @Override
+ public void updateLocation(int locationID, String location_name) {
+	 locationDao.updateLocation(locationID, location_name);
+     
+ }
+
+ @Override
+ public void newLocation(int locationID, String location_name) {
+     locationDao.newLocation(locationID, location_name);        
+ }
+ 
+ 
+ 
+ 
+}// end DefaultDealershipService class

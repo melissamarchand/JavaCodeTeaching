@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
 
 public class LocationDao {
@@ -24,12 +25,12 @@ public class LocationDao {
                     PreparedStatement preparedStatement = connection.prepareStatement(getLocation);
                     
             ) {
-                preparedStatement.setInt(1, LocationID);
+                preparedStatement.setInt(1, locationID);
             // execute the location query
             ResultSet rs = preparedStatement.executeQuery();
             List<Location> list = new ArrayList<>();
             while (rs.next()) {
-                int locationID = rs.getInt("locationID");
+                int location_ID = rs.getInt("locationID");
                 String location_name = rs.getString("locationName");
               
                 Location location = new Location(locationID, location_name);
@@ -43,7 +44,7 @@ public class LocationDao {
     }
 
     
-    public void addNewLocation(int locationID, String location_name) {
+    public void newLocation(int locationID, String location_name) {
          
         final String updateTransaction = "INSERT into locations (locationID, location_name)" +
             "Values (?, ?);";

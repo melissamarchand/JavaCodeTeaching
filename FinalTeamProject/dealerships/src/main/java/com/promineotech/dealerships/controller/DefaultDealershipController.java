@@ -3,6 +3,7 @@ package com.promineotech.dealerships.controller;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
 import com.promineotech.dealerships.service.DealershipService;
 
@@ -21,6 +22,9 @@ public class DefaultDealershipController implements DealershipController{
     @Autowired
     private DealershipService dealershipService;
 
+    
+    //==========================Customers===============================================
+
     @Override
     @GetMapping("Customers")
     public ResponseEntity<List<Customer>> listCustomers(){
@@ -28,7 +32,6 @@ public class DefaultDealershipController implements DealershipController{
         List<Customer> customers = dealershipService.listCustomers();
         return new ResponseEntity<List<Customer>>(customers, HttpStatus.OK);
     }
-    
     
     // Insert operation on customers table
     @Override
@@ -45,13 +48,14 @@ public class DefaultDealershipController implements DealershipController{
         dealershipService.deleteCustomer(customer_id, name, address, phone);
     }
 
+  //==========================Transactions===============================================
+
     @Override
     public ResponseEntity<List<Transaction>> getTransactions(int transactionID) {
         List<Transaction> transactions = dealershipService.getTransactions(transactionID);
         return new ResponseEntity<List<Transaction>>(transactions, HttpStatus.OK);
         
     }
-
     @Override
     public void deleteTransaction(int transactionID) {
         dealershipService.deleteTransaction(transactionID);
@@ -68,6 +72,32 @@ public class DefaultDealershipController implements DealershipController{
     @Override
     public void newTransaction(int vehicleID, int customerID, int employeeID, int locationID, String date) {
        dealershipService.newTransaction(vehicleID, customerID, employeeID, locationID, date);
+        
+    }
+    
+  //==========================Locations===============================================
+    @Override
+    public ResponseEntity<List<Location>> getLocation(int locationID) {
+        List<Location> location = dealershipService.getLocation(locationID);
+        return new ResponseEntity<List<Location>>(location, HttpStatus.OK);
+    }
+
+    @Override
+    public void deleteLocation(int locationID) {
+        dealershipService.deleteTransaction(locationID);
+        
+    }
+
+    @Override
+    public void updateLocation(int locationID,
+            String location_name) {
+        dealershipService.updateLocation(locationID, location_name);
+        
+    }
+
+    @Override
+    public void newLocation(int locationID, String location_name) {
+       dealershipService.newLocation(locationID, location_name);
         
     }
 }
