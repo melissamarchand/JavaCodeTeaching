@@ -12,7 +12,7 @@ CREATE TABLE customers (
   phone varchar(20),
   PRIMARY KEY (customerID)
 );
-create table dealerships ();
+create table locations ();
 CREATE TABLE vehicles (
   vehicleID int (10) NOT NULL AUTO_INCREMENT,
   locationID int (10) NOT NULL AUTO_INCREMENT,
