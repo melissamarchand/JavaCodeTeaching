@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Employee {
     private int employeeNum;
+    private String name;
     private int dealershipID;
 
 }

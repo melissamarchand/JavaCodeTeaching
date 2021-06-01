@@ -6,20 +6,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Location;
-import com.promineotech.dealerships.entity.Transaction;
 
 public class LocationDao {
+    private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "Dolphins";
 	
 	//getLocation method- get a location by id
     public List<Location> getLocation(Integer locationID){
         final String getLocation = "SELECT * FROM locations where locationID = ?";
 
         try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-                        "root", "Dolphins");
+            Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
                 // create a statement using connection object
                     PreparedStatement preparedStatement = connection.prepareStatement(getLocation);
@@ -33,13 +35,13 @@ public class LocationDao {
                 int location_ID = rs.getInt("locationID");
                 String location_name = rs.getString("locationName");
               
-                Location location = new Location(locationID, location_name);
+                Location location = new Location(location_ID, location_name);
                 list.add(location);
             }
             return list;
         } catch (SQLException e) {
             printSQLException(e);
-            return null;
+            return Collections.emptyList();
         } 
     }
 
@@ -52,8 +54,7 @@ public class LocationDao {
         // establish a connection
 
         try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-                        "root", "Dolphins");
+            Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
                 // create a car statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement(updateTransaction)) {
@@ -79,8 +80,7 @@ public class LocationDao {
         // establish a connection
 
         try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-                        "root", "Dolphins");
+            Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
                 // create a car statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement(updateLocation)) {
@@ -103,8 +103,7 @@ public class LocationDao {
         final String getTransaction = "DELETE * FROM locations where locationID = ?";
 
         try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-                        "root", "Dolphins");
+            Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
                 // create a statement using connection object
                     PreparedStatement preparedStatement = connection.prepareStatement(getTransaction);

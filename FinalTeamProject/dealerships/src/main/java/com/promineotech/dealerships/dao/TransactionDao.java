@@ -2,6 +2,7 @@ package com.promineotech.dealerships.dao;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,13 +12,16 @@ import java.sql.SQLException;
 import com.promineotech.dealerships.entity.Transaction;
 
 public class TransactionDao {
+    private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "Dolphins";
+
     
         public List<Transaction> getTransaction(Integer transactionID){
             final String getTransaction = "SELECT * FROM transactions where transactionID = ?";
 
             try (
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-                            "root", "Dolphins");
+                    Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
                     // create a statement using connection object
                         PreparedStatement preparedStatement = connection.prepareStatement(getTransaction);
@@ -40,7 +44,7 @@ public class TransactionDao {
                 return list;
             } catch (SQLException e) {
                 printSQLException(e);
-                return null;
+                return Collections.emptyList();
             } 
         }
 
@@ -54,8 +58,7 @@ public class TransactionDao {
             // establish a connection
     
             try (
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-                            "root", "Dolphins");
+                Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
     
                     // create a car statement using connection object
                     PreparedStatement preparedStatement = connection.prepareStatement(updateTransaction)) {
@@ -84,8 +87,7 @@ public class TransactionDao {
             // establish a connection
     
             try (
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-                            "root", "Dolphins");
+                Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
     
                     // create a car statement using connection object
                     PreparedStatement preparedStatement = connection.prepareStatement(updateTransaction)) {
@@ -111,8 +113,7 @@ public class TransactionDao {
             final String getTransaction = "DELETE * FROM transactions where transaction_id = ?";
 
             try (
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-                            "root", "Dolphins");
+                    Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
                     // create a statement using connection object
                         PreparedStatement preparedStatement = connection.prepareStatement(getTransaction);

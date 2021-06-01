@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -15,13 +16,15 @@ import com.promineotech.dealerships.entity.Employee;
 
 @Service
 public class EmployeeDao {
+    private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "Dolphins";
+	
 
-	//
 	public List<Employee> listAllEmployees() {
 		final String sql = "SELECT * FROM employees";
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-				"", "");
+		try (Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
 				// create an employee statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
@@ -39,7 +42,7 @@ public class EmployeeDao {
 			return list;
 		} catch (SQLException e) {
 			printSQLException(e);
-			return null;
+			return Collections.emptyList();
 		}
 
 	}
@@ -47,8 +50,7 @@ public class EmployeeDao {
 	public void updateEmployee(int employeeID, String name, int locationID) {
 		final String sql = "update which employeeID = ?, name = ?, locationID = ?;";
 
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-				"", "");
+		try (Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
 				// create an employee statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);) {

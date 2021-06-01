@@ -1,6 +1,7 @@
 package com.promineotech.dealerships.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,13 +15,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerDao {
+    private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "Dolphins";
 
     public List<Customer> listAllCustomers() {
         final String sql = "SELECT * FROM customers";
 
         try (
-				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-						"root", "Dolphins");
+			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
 				// create a car statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -40,7 +43,7 @@ public class CustomerDao {
             return list;
         } catch (SQLException e) {
 			printSQLException(e);
-            return null;
+            return Collections.emptyList();
 		} 
             
     }
@@ -49,8 +52,7 @@ public class CustomerDao {
         final String sql = "insert into customers add name = ?, address = ? , phone = ?, where customer_id = ?;";
 
         try (
-				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-						"root", "Dolphins");
+			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
 				// create a car statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -74,8 +76,7 @@ public class CustomerDao {
         final String sql = "update customers set name = ?, address = ? , phone = ?, where customer_id = ?;";
 
         try (
-				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-						"root", "Dolphins");
+			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
 				// create a car statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -101,8 +102,7 @@ public class CustomerDao {
         final String sql = "delete customer, confirm name = ?, address = ? , phone = ?, where customerID = ?;";
 
         try (
-				Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dealership?useSSL=false",
-						"", "");
+			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
 				// create a customer delete statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);

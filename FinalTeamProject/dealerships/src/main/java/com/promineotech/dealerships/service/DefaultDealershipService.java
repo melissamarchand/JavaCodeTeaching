@@ -10,7 +10,6 @@ import com.promineotech.dealerships.dao.VehicleDao;
 import com.promineotech.dealerships.entity.Customer;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
-import com.sun.tools.javac.file.Locations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +34,7 @@ public class DefaultDealershipService implements DealershipService{
     
     //==========================Customers===============================================
 
-
+    @Override
     public List<Customer> listCustomers(){
         return customerDao.listAllCustomers();
     }
@@ -45,10 +44,16 @@ public class DefaultDealershipService implements DealershipService{
         customerDao.newCustomer(customerID, name, address, phone);        
     }
 
-
+    @Override
     public void updateCustomer(int customer_id, String name, String address, String phone){
         customerDao.updateCustomer(customer_id, name, address, phone);
     }
+
+    @Override
+    public void deleteCustomer(int customer_id, String name, String address, String phone) {
+    // TODO Auto-generated method stub
+    
+}
 
     //==========================Transactions===============================================
 
