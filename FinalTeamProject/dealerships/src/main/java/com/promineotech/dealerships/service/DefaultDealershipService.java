@@ -50,8 +50,9 @@ public class DefaultDealershipService implements DealershipService{
     }
 
     @Override
-    public void deleteCustomer(int customer_id, String name, String address, String phone) {
-    // TODO Auto-generated method stub
+     public void deleteCustomer(int customerID, String name, String address, String phone){
+        customerDao.deleteCustomer(customerID, name, address, phone);
+    }
     
 }
 
