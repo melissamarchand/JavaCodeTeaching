@@ -32,7 +32,7 @@ public interface DealershipController {
     @PutMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void newCustomer(
-        @RequestParam(required = true) int customer_id, 
+        @RequestParam(required = true) int customerID, 
         @RequestParam(required = false) String name,
         @RequestParam(required = false) String address, 
         @RequestParam(required = false) String phone);
@@ -40,7 +40,7 @@ public interface DealershipController {
     @PutMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void updateCustomer(
-        @RequestParam(required = true) int customer_id, 
+        @RequestParam(required = true) int customerID, 
         @RequestParam(required = false) String name,
         @RequestParam(required = false) String address, 
         @RequestParam(required = false) String phone);
@@ -50,7 +50,7 @@ public interface DealershipController {
     @DeleteMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void deleteCustomer(
-        @RequestParam(required = true) int customer_id, 
+        @RequestParam(required = true) int customerID, 
         @RequestParam(required = false) String name,
         @RequestParam(required = false) String address, 
         @RequestParam(required = false) String phone);
@@ -117,13 +117,13 @@ void deleteLocation(
 @ResponseStatus(code = HttpStatus.OK)
 void newLocation( 
     @RequestParam(required = true) int locationID, 
-    @RequestParam(required = true) String location_name);
+    @RequestParam(required = true) String locationName);
 
 @PutMapping("Locations")
 @ResponseStatus(code = HttpStatus.OK)
 void updateLocation(
     @RequestParam(required = false) int locationID, 
-    @RequestParam(required = false) String location_name);
+    @RequestParam(required = false) String locationName);
 
 
 

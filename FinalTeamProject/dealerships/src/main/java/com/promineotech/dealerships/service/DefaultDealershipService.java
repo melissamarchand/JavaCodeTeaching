@@ -45,8 +45,8 @@ public class DefaultDealershipService implements DealershipService{
     }
 
     @Override
-    public void updateCustomer(int customer_id, String name, String address, String phone){
-        customerDao.updateCustomer(customer_id, name, address, phone);
+    public void updateCustomer(int customerID, String name, String address, String phone){
+        customerDao.updateCustomer(customerID, name, address, phone);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class DefaultDealershipService implements DealershipService{
         customerDao.deleteCustomer(customerID, name, address, phone);
     }
     
-}
+
 
     //==========================Transactions===============================================
 
@@ -92,14 +92,14 @@ public List<Location> getLocation(int locationID){
  }
 
  @Override
- public void updateLocation(int locationID, String location_name) {
-	 locationDao.updateLocation(locationID, location_name);
+ public void updateLocation(int locationID, String locationName) {
+	 locationDao.updateLocation(locationID, locationName);
      
  }
 
  @Override
- public void newLocation(int locationID, String location_name) {
-     locationDao.newLocation(locationID, location_name);        
+ public void newLocation(int locationID, String locationName) {
+     locationDao.newLocation(locationID, locationName);        
  }
  
  

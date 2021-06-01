@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Vehicle {
     private int vehicleID;
     private int dealershipID;
-    private boolean isSold;
+    private boolean is_sold;
     private String make;
     private String model;
     private double price;

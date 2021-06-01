@@ -35,17 +35,17 @@ public class DefaultDealershipController implements DealershipController{
     
     // Insert operation on customers table
     @Override
-    public void newCustomer(int customer_id, String name, String address, String phone){
-        dealershipService.newCustomer(customer_id, name, address, phone);
+    public void newCustomer(int customerID, String name, String address, String phone){
+        dealershipService.newCustomer(customerID, name, address, phone);
     }
 
-    public void updateCustomer(int customer_id, String name, String address, String phone){
-        dealershipService.updateCustomer(customer_id, name, address, phone);
+    public void updateCustomer(int customerID, String name, String address, String phone){
+        dealershipService.updateCustomer(customerID, name, address, phone);
     }
 
     // Delete operation on customers table
-    public void deleteCustomer(int customer_id, String name, String address, String phone){
-        dealershipService.deleteCustomer(customer_id, name, address, phone);
+    public void deleteCustomer(int customerID, String name, String address, String phone){
+        dealershipService.deleteCustomer(customerID, name, address, phone);
     }
 
   //==========================Transactions===============================================
@@ -90,14 +90,14 @@ public class DefaultDealershipController implements DealershipController{
 
     @Override
     public void updateLocation(int locationID,
-            String location_name) {
-        dealershipService.updateLocation(locationID, location_name);
+            String locationName) {
+        dealershipService.updateLocation(locationID, locationName);
         
     }
 
     @Override
-    public void newLocation(int locationID, String location_name) {
-       dealershipService.newLocation(locationID, location_name);
+    public void newLocation(int locationID, String locationName) {
+       dealershipService.newLocation(locationID, locationName);
         
     }
 }

@@ -12,7 +12,11 @@ CREATE TABLE customers (
   phone varchar(20),
   PRIMARY KEY (customerID)
 );
-create table locations ();
+CREATE TABLE locations (
+locationID int(3) NOT NULL AUTO_INCREMENT,
+location_name varchar(40) NOT NULL,
+PRIMARY KEY (locationID) 
+);
 CREATE TABLE vehicles (
   vehicleID int (10) NOT NULL AUTO_INCREMENT,
   locationID int (10) NOT NULL AUTO_INCREMENT,
@@ -23,7 +27,13 @@ CREATE TABLE vehicles (
   PRIMARY KEY (vehicleID),
   FOREIGN KEY (locationID) REFERENCES locations(locationID)
 );
-create table employees ();
+CREATE TABLE employees (
+employeeID int(5) NOT NULL AUTO_INCREMENT,
+locationID int(5) NOT NULL,
+name varchar(40) NOT NULL,
+ PRIMARY KEY (employeeID),
+ FOREIGN KEY (locationID) REFERENCES locations(locationID)
+);
 create table transactions (
   transactionID int (10) NOT NULL AUTO_INCREMENT,
   vehicleID int (10) NOT NULL,

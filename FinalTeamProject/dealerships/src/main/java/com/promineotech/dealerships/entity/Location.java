@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Location {
     private int locationID;
-    private String location;
+    private String locationName;
 }

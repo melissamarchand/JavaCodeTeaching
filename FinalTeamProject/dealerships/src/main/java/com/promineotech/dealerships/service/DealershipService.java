@@ -14,9 +14,9 @@ public interface DealershipService {
      */
 
     List<Customer> listCustomers();
-    void updateCustomer(int customer_id, String name, String address, String phone);
-    void newCustomer(int customer_id, String name, String address, String phone);
-    void deleteCustomer(int customer_id, String name, String address, String phone);
+    void updateCustomer(int customerID, String name, String address, String phone);
+    void newCustomer(int customerID, String name, String address, String phone);
+    void deleteCustomer(int customerID, String name, String address, String phone);
 
     /**
      * Transaction Functions 
@@ -38,8 +38,8 @@ public interface DealershipService {
 
     public List<Location> getLocation(int locationID);
     public void deleteLocation(int locationID);
-    public void updateLocation(int locationID, String location_name);
-    public void newLocation(int locationID, String location_name);
+    public void updateLocation(int locationID, String locationName);
+    public void newLocation(int locationID, String locationName);
 	
     
 }

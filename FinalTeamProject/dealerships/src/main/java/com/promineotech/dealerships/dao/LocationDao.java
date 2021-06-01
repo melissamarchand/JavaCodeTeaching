@@ -33,9 +33,9 @@ public class LocationDao {
             List<Location> list = new ArrayList<>();
             while (rs.next()) {
                 int location_ID = rs.getInt("locationID");
-                String location_name = rs.getString("locationName");
+                String locationName = rs.getString("location_name");
               
-                Location location = new Location(location_ID, location_name);
+                Location location = new Location(location_ID, locationName);
                 list.add(location);
             }
             return list;
@@ -46,7 +46,7 @@ public class LocationDao {
     }
 
     
-    public void newLocation(int locationID, String location_name) {
+    public void newLocation(int locationID, String locationName) {
          
         final String updateTransaction = "INSERT into locations (locationID, location_name)" +
             "Values (?, ?);";
@@ -59,7 +59,7 @@ public class LocationDao {
                 // create a car statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement(updateTransaction)) {
                     preparedStatement.setInt(1, locationID);
-                    preparedStatement.setString(2, location_name);
+                    preparedStatement.setString(2, locationName);
 
 
             // execute query or update query
@@ -73,7 +73,7 @@ public class LocationDao {
     }
 
 
-    public void updateLocation(int locationID, String location_name) {
+    public void updateLocation(int locationID, String locationName) {
          
         final String updateLocation = "update locations set locationID = ?, location_name = ? , where locationID = ?;";
 
@@ -85,7 +85,7 @@ public class LocationDao {
                 // create a car statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement(updateLocation)) {
                     preparedStatement.setInt(1, locationID);
-                    preparedStatement.setString(2, location_name);
+                    preparedStatement.setString(2, locationName);
                 
 
             // execute query or update query
