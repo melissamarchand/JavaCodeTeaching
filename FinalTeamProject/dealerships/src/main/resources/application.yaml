@@ -2,7 +2,7 @@ spring:
     datasource:
         password: root
         username: 
-        url: jdbc:mysql://3306/jeep
+        url: jdbc:mysql://3306/dealership
 
 logging:
     level:

@@ -3,6 +3,7 @@ package com.promineotech.dealerships.controller;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
 
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/Dealerships")
 public interface DealershipController {
     
+    //==========================Customers===============================================
 
     /**
      * Customer Handlers
@@ -27,10 +29,10 @@ public interface DealershipController {
     ResponseEntity<List<Customer>> listCustomers();
     
     // Insert customer
-    @PutMapping("Customers")
+    @PostMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void newCustomer(
-        @RequestParam(required = true) int customer_id, 
+        @RequestParam(required = true) int customerID, 
         @RequestParam(required = false) String name,
         @RequestParam(required = false) String address, 
         @RequestParam(required = false) String phone);
@@ -38,7 +40,7 @@ public interface DealershipController {
     @PutMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void updateCustomer(
-        @RequestParam(required = true) int customer_id, 
+        @RequestParam(required = true) int customerID, 
         @RequestParam(required = false) String name,
         @RequestParam(required = false) String address, 
         @RequestParam(required = false) String phone);
@@ -48,13 +50,15 @@ public interface DealershipController {
     @DeleteMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void deleteCustomer(
-        @RequestParam(required = true) int customer_id, 
+        @RequestParam(required = true) int customerID, 
         @RequestParam(required = false) String name,
         @RequestParam(required = false) String address, 
         @RequestParam(required = false) String phone);
 
+    //==========================Transactions===============================================
+
     /**
-     * Transaction handelers 
+     * Transaction handlers 
      * @param transactionID
      * @return
      */
@@ -88,4 +92,40 @@ public interface DealershipController {
         @RequestParam(required = false) int employeeID, 
         @RequestParam(required = false) int locationID, 
         @RequestParam(required = false) String date);
-}
+
+
+//==========================Locations===============================================
+
+/**
+ * Location handlers 
+ * @param locationID
+ * @return
+ */
+@GetMapping("Locations")
+@ResponseStatus(code = HttpStatus.OK)
+ResponseEntity<List<Location>> getLocation(
+    @RequestParam(required = true) int locationID
+);
+
+@DeleteMapping("Locations")
+@ResponseStatus(code = HttpStatus.OK)
+void deleteLocation(
+    @RequestParam(required = true) int locationID
+);
+
+@PostMapping("Locations")
+@ResponseStatus(code = HttpStatus.OK)
+void newLocation( 
+    @RequestParam(required = true) int locationID, 
+    @RequestParam(required = true) String locationName);
+
+@PutMapping("Locations")
+@ResponseStatus(code = HttpStatus.OK)
+void updateLocation(
+    @RequestParam(required = false) int locationID, 
+    @RequestParam(required = false) String locationName);
+
+
+
+} // end DealershipController Interface
+

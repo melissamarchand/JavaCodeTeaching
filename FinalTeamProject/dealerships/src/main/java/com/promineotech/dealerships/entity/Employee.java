@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
-    private int employeeNum;
-    private int dealershipID;
+    private int employeeID;
+    private String name;
+    private int locationID;
 
 }
