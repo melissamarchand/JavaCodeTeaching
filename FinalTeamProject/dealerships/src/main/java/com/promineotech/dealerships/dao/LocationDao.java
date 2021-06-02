@@ -1,6 +1,8 @@
 package com.promineotech.dealerships.dao;
 
 import java.sql.Connection;
+
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,8 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.promineotech.dealerships.entity.Location;
 
+@Service
 public class LocationDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";

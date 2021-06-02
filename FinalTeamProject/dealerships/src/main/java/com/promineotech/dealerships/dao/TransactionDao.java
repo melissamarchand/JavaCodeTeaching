@@ -1,6 +1,9 @@
 package com.promineotech.dealerships.dao;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.sql.Connection;
@@ -11,6 +14,7 @@ import java.sql.SQLException;
 
 import com.promineotech.dealerships.entity.Transaction;
 
+@Service
 public class TransactionDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";

@@ -29,7 +29,7 @@ public interface DealershipController {
     ResponseEntity<List<Customer>> listCustomers();
     
     // Insert customer
-    @PutMapping("Customers")
+    @PostMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void newCustomer(
         @RequestParam(required = true) int customerID, 
