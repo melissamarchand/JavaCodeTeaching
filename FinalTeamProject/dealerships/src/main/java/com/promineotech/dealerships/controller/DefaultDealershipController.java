@@ -140,12 +140,12 @@ public class DefaultDealershipController implements DealershipController{
        dealershipService.deleteVehicle(vehicleID);
     }
    @Override
-   public void updateVehicle(int vehicleID,int dealershipID, boolean is_sold, String make, String model, double price) {
-       dealershipService.updateVehicle(vehicleID, dealershipID, is_sold, make, model, price);
+   public void updateVehicle(int vehicleID,int locationID, boolean is_sold, String make, String model, double price) {
+       dealershipService.updateVehicle(vehicleID, locationID, is_sold, make, model, price);
    }
    @Override
-   public void newVehicle(int vehicleID,int dealershipID, boolean is_sold, String make, String model, double price) {
-   dealershipService.newVehicle(vehicleID, dealershipID, is_sold, make, model, price);
+   public void newVehicle(int vehicleID,int locationID, boolean is_sold, String make, String model, double price) {
+   dealershipService.newVehicle(vehicleID, locationID, is_sold, make, model, price);
 }
 
 }

@@ -77,7 +77,8 @@ public class DefaultDealershipService implements DealershipService{
 
     @Override
     public void newTransaction(int vehicleID, int customerID, int employeeID, int locationID, String date) {
-        vehicleDao.updateVehicle(vehicleID, true);
+    	Vehicle car = vehicleDao.getVehicle(vehicleID).get(0);
+        vehicleDao.updateVehicle(vehicleID, car.getLocationID(), true, car.getMake(), car.getModel(), car.getPrice());
         transactionDao.newTransaction(vehicleID, customerID, employeeID, locationID, date);        
     }
 
@@ -139,14 +140,14 @@ public void deleteVehicle(int vehicleID) {
 }
 
 @Override
-public void updateVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price) {
-    vehicleDao.newVehicle(vehicleID, dealershipID, is_sold, make, model, price);
+public void updateVehicle(int vehicleID, int locationID, boolean is_sold, String make, String model, double price) {
+    vehicleDao.updateVehicle(vehicleID, locationID, is_sold, make, model, price);
 
 }
 
 @Override
-public void newVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price) {
-    vehicleDao.newVehicle(vehicleID, dealershipID, is_sold, make, model, price);
+public void newVehicle(int vehicleID, int locationID, boolean is_sold, String make, String model, double price) {
+    vehicleDao.newVehicle(vehicleID, locationID, is_sold, make, model, price);
 }
  
  

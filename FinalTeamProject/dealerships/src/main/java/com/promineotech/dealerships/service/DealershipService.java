@@ -63,6 +63,6 @@ public interface DealershipService {
 
     public List<Vehicle> getVehicle(int vehicleID);
     public void deleteVehicle(int vehicleID);
-    public void updateVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price);
-    public void newVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price);
+    public void updateVehicle(int vehicleID, int locationID, boolean is_sold, String make, String model, double price);
+    public void newVehicle(int vehicleID, int locationID, boolean is_sold, String make, String model, double price);
 }

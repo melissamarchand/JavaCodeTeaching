@@ -183,17 +183,17 @@ void deleteEmployee(
   @ResponseStatus(code = HttpStatus.OK)
   void newVehicle(
           @RequestParam(required = true) int vehicleID,
-          @RequestParam(required = true) int dealershipID,
+          @RequestParam(required = true) int locationID,
           @RequestParam(required = true) boolean is_sold,
           @RequestParam(required = true) String make,
           @RequestParam(required = true) String model,
           @RequestParam(required = true) double price);
 
-  @PostMapping("Vehicles")
+  @PutMapping("Vehicles")
   @ResponseStatus(code = HttpStatus.OK)
   void updateVehicle(
           @RequestParam(required = false) int vehicleID,
-          @RequestParam(required = false) int dealershipID,
+          @RequestParam(required = false) int locationID,
           @RequestParam(required = false) boolean is_sold,
           @RequestParam(required = false) String make,
           @RequestParam(required = false) String model,
