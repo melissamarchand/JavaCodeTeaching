@@ -13,15 +13,13 @@ import org.springframework.stereotype.Service;
 
 import com.promineotech.dealerships.entity.Employee;
 
-
 @Service
 public class EmployeeDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "Dolphins";
 	
-
-	public List<Employee> listAllEmployees() {
+    public List<Employee> listAllEmployees() {
 		final String sql = "SELECT * FROM employees";
 
 		try (Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -46,6 +44,32 @@ public class EmployeeDao {
 		}
 
 	}
+    
+ // new 
+    public void newEmployee(int customerID, String name, int locationID) {
+        final String sql = "insert into employees add name = ?, locationID = ? , where customerID = ?;";
+
+        try (
+			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+
+				
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ) {
+
+                preparedStatement.setString(1, name);
+                preparedStatement.setInt(2, locationID);
+                preparedStatement.setInt(3, customerID);
+
+			  
+			    preparedStatement.executeQuery();
+            
+        } catch (SQLException e) {
+			printSQLException(e);
+		} 
+            
+    }
+    
+    //update
 
 	public void updateEmployee(int employeeID, String name, int locationID) {
 		final String sql = "update which employeeID = ?, name = ?, locationID = ?;";
@@ -66,6 +90,31 @@ public class EmployeeDao {
 		}
 
 	}
+	
+	// Delete 
+    
+    public void deleteEmployee(int employeeID, String name, int locationID) {
+        final String sql = "delete employee, confirm name = ?, locationID = ? , where employeeID = ?;";
+
+        try (
+			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
+
+				
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ) {
+
+                preparedStatement.setString(1, name);
+                preparedStatement.setInt(2, locationID);
+                preparedStatement.setInt(3, employeeID);
+
+			    
+			    preparedStatement.executeQuery();
+            
+        } catch (SQLException e) {
+			printSQLException(e);
+		} 
+            
+    }
 
 	public static void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {
