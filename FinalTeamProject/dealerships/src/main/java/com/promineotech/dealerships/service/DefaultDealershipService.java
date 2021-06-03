@@ -11,6 +11,7 @@ import com.promineotech.dealerships.entity.Customer;
 import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
+import com.promineotech.dealerships.entity.Vehicle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -126,7 +127,27 @@ public List<Location> getLocation(int locationID){
  }
  
 
+//============================vehicle==========================================
+ 
+public List<Vehicle> getVehicle(int vehicleID){
+    return vehicleDao.getVehicle(vehicleID);
 
+}
+@Override
+public void deleteVehicle(int vehicleID) {
+    vehicleDao.deleteVehicle(vehicleID);
+}
+
+@Override
+public void updateVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price) {
+    vehicleDao.newVehicle(vehicleID, dealershipID, is_sold, make, model, price);
+
+}
+
+@Override
+public void newVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price) {
+    vehicleDao.newVehicle(vehicleID, dealershipID, is_sold, make, model, price);
+}
  
  
 }// end DefaultDealershipService class

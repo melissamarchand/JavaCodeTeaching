@@ -6,6 +6,7 @@ import com.promineotech.dealerships.entity.Customer;
 import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
+import com.promineotech.dealerships.entity.Vehicle;
 import com.promineotech.dealerships.service.DealershipService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,5 +127,25 @@ public class DefaultDealershipController implements DealershipController{
     public void deleteEmployee(int employeeID, String name, int locationID){
         dealershipService.deleteEmployee(employeeID, name, locationID);
     }
+
+
+    //===========================Vehicles==============================================
+    @Override
+    public ResponseEntity<List<Vehicle>> getVehicle(int vehicleID) {
+        List<Vehicle> vehicle = dealershipService.getVehicle(vehicleID);
+        return new ResponseEntity<List<Vehicle>>(vehicle, HttpStatus.OK);
+    }
+   @Override
+   public void deleteVehicle(int vehicleID) {
+       dealershipService.deleteVehicle(vehicleID);
+    }
+   @Override
+   public void updateVehicle(int vehicleID,int dealershipID, boolean is_sold, String make, String model, double price) {
+       dealershipService.updateVehicle(vehicleID, dealershipID, is_sold, make, model, price);
+   }
+   @Override
+   public void newVehicle(int vehicleID,int dealershipID, boolean is_sold, String make, String model, double price) {
+   dealershipService.newVehicle(vehicleID, dealershipID, is_sold, make, model, price);
+}
 
 }

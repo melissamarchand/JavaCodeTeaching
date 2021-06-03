@@ -6,6 +6,7 @@ import com.promineotech.dealerships.entity.Customer;
 import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
+import com.promineotech.dealerships.entity.Vehicle;
 
 public interface DealershipService {
 
@@ -53,4 +54,15 @@ public interface DealershipService {
     void newEmployee(int customerID, String name, int locationID);
     void deleteEmployee(int customerID, String name, int locationID);
     
+
+    /**
+     * Vehicle Functions
+     * @param VehicleID
+     * @return
+     */
+
+    public List<Vehicle> getVehicle(int vehicleID);
+    public void deleteVehicle(int vehicleID);
+    public void updateVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price);
+    public void newVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price);
 }

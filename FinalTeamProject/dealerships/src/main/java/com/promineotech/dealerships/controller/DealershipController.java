@@ -6,6 +6,7 @@ import com.promineotech.dealerships.entity.Customer;
 import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
+import com.promineotech.dealerships.entity.Vehicle;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -158,7 +159,47 @@ void deleteEmployee(
 
 
 
+//========================Vehicles========================================
+
+  /**
+   *  Vehicle handlers
+   *  @param vehicleID
+   *  @return
+   */
+  @GetMapping("Vehicles")
+  @ResponseStatus(code = HttpStatus.OK)
+  ResponseEntity<List<Vehicle>> getVehicle(
+          @RequestParam(required = true) int vehicleID
+  );
+
+  @DeleteMapping("Vehicles")
+  @ResponseStatus(code = HttpStatus.OK)
+  void deleteVehicle(
+          @RequestParam(required = true) int vehicleID);
 
 
-}// end DealershipController Interface
+
+  @PostMapping("Vehicles")
+  @ResponseStatus(code = HttpStatus.OK)
+  void newVehicle(
+          @RequestParam(required = true) int vehicleID,
+          @RequestParam(required = true) int dealershipID,
+          @RequestParam(required = true) boolean is_sold,
+          @RequestParam(required = true) String make,
+          @RequestParam(required = true) String model,
+          @RequestParam(required = true) double price);
+
+  @PostMapping("Vehicles")
+  @ResponseStatus(code = HttpStatus.OK)
+  void updateVehicle(
+          @RequestParam(required = false) int vehicleID,
+          @RequestParam(required = false) int dealershipID,
+          @RequestParam(required = false) boolean is_sold,
+          @RequestParam(required = false) String make,
+          @RequestParam(required = false) String model,
+          @RequestParam(required = false) double price);
+
+} // end DealershipController Interface
+
+
 
