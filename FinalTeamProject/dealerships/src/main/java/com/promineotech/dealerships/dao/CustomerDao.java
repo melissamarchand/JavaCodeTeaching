@@ -43,6 +43,7 @@ public class CustomerDao {
             return list;
         } catch (SQLException e) {
 			printSQLException(e);
+			System.out.println("test");
             return Collections.emptyList();
 		} 
             
