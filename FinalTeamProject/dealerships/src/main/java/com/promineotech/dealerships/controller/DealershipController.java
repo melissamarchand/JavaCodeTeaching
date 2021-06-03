@@ -3,6 +3,7 @@ package com.promineotech.dealerships.controller;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
 
@@ -125,7 +126,39 @@ void updateLocation(
     @RequestParam(required = false) int locationID, 
     @RequestParam(required = false) String locationName);
 
+//==========================Employee===============================================
 
 
-} // end DealershipController Interface
+@GetMapping("Employees")
+ResponseEntity<List<Employee>> listEmployees();
+
+
+@PostMapping("Employees")
+@ResponseStatus(code = HttpStatus.OK)
+void newEmployee(
+    @RequestParam(required = true) int employeeID, 
+    @RequestParam(required = false) String name,
+    @RequestParam(required = false) int locationID);
+   
+
+@PutMapping("Employees")
+@ResponseStatus(code = HttpStatus.OK)
+void updateEmployee(
+    @RequestParam(required = true) int employeeID, 
+    @RequestParam(required = false) String name,
+    @RequestParam(required = false) int locationID);
+
+
+@DeleteMapping("Employees")
+@ResponseStatus(code = HttpStatus.OK)
+void deleteEmployee(
+    @RequestParam(required = true) int employeeID, 
+    @RequestParam(required = false) String name,
+    @RequestParam(required = false) int locationID);
+
+
+
+
+
+}// end DealershipController Interface
 

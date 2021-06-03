@@ -3,6 +3,7 @@ package com.promineotech.dealerships.controller;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
 import com.promineotech.dealerships.service.DealershipService;
@@ -47,6 +48,7 @@ public class DefaultDealershipController implements DealershipController{
     public void deleteCustomer(int customerID, String name, String address, String phone){
         dealershipService.deleteCustomer(customerID, name, address, phone);
     }
+    
 
   //==========================Transactions===============================================
 
@@ -100,4 +102,29 @@ public class DefaultDealershipController implements DealershipController{
        dealershipService.newLocation(locationID, locationName);
         
     }
+    
+    //==========================Employees===============================================
+
+    @Override
+    @GetMapping("Employees")
+    public ResponseEntity<List<Employee>> listEmployees(){
+        log.info("employee list requested");
+        List<Employee> employees = dealershipService.listEmployees();
+        return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK);
+    }
+    
+   //@Override
+    public void newEmployee(int employeeID, String name, int locationID){
+        dealershipService.newEmployee(employeeID, name, locationID);
+    }
+
+    public void updateEmployee(int employeeID, String name, int locationID){
+        dealershipService.updateEmployee(employeeID, name, locationID);
+    }
+
+  
+    public void deleteEmployee(int employeeID, String name, int locationID){
+        dealershipService.deleteEmployee(employeeID, name, locationID);
+    }
+
 }
