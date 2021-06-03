@@ -8,6 +8,7 @@ import com.promineotech.dealerships.dao.EmployeeDao;
 import com.promineotech.dealerships.dao.TransactionDao;
 import com.promineotech.dealerships.dao.VehicleDao;
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
 
@@ -102,7 +103,30 @@ public List<Location> getLocation(int locationID){
      locationDao.newLocation(locationID, locationName);        
  }
  
+//==========================Employees===============================================
+
+ @Override
+ public List<Employee> listEmployees(){
+     return employeeDao.listAllEmployees();
+ }
+
+	@Override
+ public void newEmployee(int customerID, String name, int locationID) {
+     employeeDao.newEmployee(customerID, name, locationID);        
+ }
+
+ @Override
+ public void updateEmployee(int customerID, String name, int locationID){
+	 employeeDao.updateEmployee(customerID, name, locationID);
+ }
+
+ @Override
+  public void deleteEmployee(int customerID, String name, int locationID){
+	 employeeDao.deleteEmployee(customerID, name, locationID);
+ }
  
+
+
  
  
 }// end DefaultDealershipService class

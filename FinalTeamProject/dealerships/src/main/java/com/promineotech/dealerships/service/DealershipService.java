@@ -3,6 +3,7 @@ package com.promineotech.dealerships.service;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
 
@@ -41,5 +42,15 @@ public interface DealershipService {
     public void updateLocation(int locationID, String locationName);
     public void newLocation(int locationID, String locationName);
 	
+    
+    /**
+     * Empolyee Functions 
+     * @return
+     */
+
+    List<Employee> listEmployees();
+    void updateEmployee(int customerID, String name, int locationID);
+    void newEmployee(int customerID, String name, int locationID);
+    void deleteEmployee(int customerID, String name, int locationID);
     
 }
