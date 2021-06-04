@@ -48,8 +48,8 @@ public class VehicleDao {
        
       
        public void newVehicle(int locationID, boolean is_sold, String make, String model, double price) {
-    	   final String updateVehicle = "INSERT into vehicle (int locationID, boolean is_sold, String make, String model, double price)" +
-       "Values (?,?,?,?,?,?);";
+    	   final String updateVehicle = "INSERT into vehicles (locationID, is_sold, make, model, price)" +
+       "Values (?,?,?,?,?);";
     	   
     	   try(
     		  Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -67,7 +67,7 @@ public class VehicleDao {
   	   }
        }
        public void updateVehicle(int vehicleID, int dealershipID, boolean is_sold, String make, String model, double price) {
-   		final String updateVehicle = "Update vehicle set locationID = ?, is_sold = ?, make = ?, model = ?, price = ?" +
+   		final String updateVehicle = "Update vehicles set locationID = ?, is_sold = ?, make = ?, model = ?, price = ?" +
    	"where vehicleID = ?;";
    		
    		try(
@@ -88,7 +88,7 @@ public class VehicleDao {
    	  }
    	}
        public void deleteVehicle(Integer vehicleID) {
-    	   final String getVehicles = "DELETE * FROM vehicles where vehicleID = ?";
+    	   final String getVehicles = "DELETE FROM vehicles where vehicleID = ?;";
     	   
     	   try(
     			   Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);

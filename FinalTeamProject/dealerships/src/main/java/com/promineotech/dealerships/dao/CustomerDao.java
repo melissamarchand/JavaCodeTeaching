@@ -73,7 +73,7 @@ public class CustomerDao {
     }
     
     public void updateCustomer(int customerID, String name, String address, String phone) {
-        final String sql = "update customers set name = ?, address = ? , phone = ?, where customerID = ?;";
+        final String sql = "update customers set name = ?, address = ? , phone = ? where customerID = ?;";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -99,7 +99,7 @@ public class CustomerDao {
 	// Delete Operation for Customers Table
     
     public void deleteCustomer(int customerID) {
-        final String sql = "delete customer where customerID = ?;";
+        final String sql = "delete from customers where customerID = ?;";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);

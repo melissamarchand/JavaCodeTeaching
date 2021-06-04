@@ -87,7 +87,7 @@ public class DefaultDealershipController implements DealershipController{
 
     @Override
     public void deleteLocation(int locationID) {
-        dealershipService.deleteTransaction(locationID);
+        dealershipService.deleteLocation(locationID);
         
     }
 

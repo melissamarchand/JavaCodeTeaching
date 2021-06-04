@@ -77,8 +77,8 @@ public class DefaultDealershipService implements DealershipService{
 
     @Override
     public void newTransaction(int vehicleID, int customerID, int employeeID, int locationID, String date) {
-    	Vehicle car = vehicleDao.getVehicle(vehicleID).get(0);
-        vehicleDao.updateVehicle(vehicleID, car.getLocationID(), true, car.getMake(), car.getModel(), car.getPrice());
+    	//Vehicle car = vehicleDao.getVehicle(vehicleID).get(0);
+        //vehicleDao.updateVehicle(vehicleID, car.getLocationID(), true, car.getMake(), car.getModel(), car.getPrice());
         transactionDao.newTransaction(vehicleID, customerID, employeeID, locationID, date);        
     }
 

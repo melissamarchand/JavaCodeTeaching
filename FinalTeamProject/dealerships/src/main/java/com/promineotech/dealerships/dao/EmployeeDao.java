@@ -47,7 +47,7 @@ public class EmployeeDao {
     
  // new 
     public void newEmployee(String name, int locationID) {
-        final String sql = "insert into employees (name, location) Values (?, ?);";
+        final String sql = "insert into employees (name, locationID) Values (?, ?);";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -71,15 +71,15 @@ public class EmployeeDao {
     //update
 
 	public void updateEmployee(int employeeID, String name, int locationID) {
-		final String sql = "update which employeeID = ?, name = ?, locationID = ?;";
+		final String sql = "update employees set name = ?, locationID = ? where employeeID = ?;";
 
 		try (Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
 
 				// create an employee statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
-			preparedStatement.setInt(1, employeeID);
-			preparedStatement.setString(2, name);
-			preparedStatement.setInt(3, locationID);
+			preparedStatement.setInt(3, employeeID);
+			preparedStatement.setString(1, name);
+			preparedStatement.setInt(2, locationID);
 
 			// execute the employee query
 			preparedStatement.executeUpdate();
@@ -93,7 +93,7 @@ public class EmployeeDao {
 	// Delete 
     
     public void deleteEmployee(int employeeID) {
-        final String sql = "delete employee where employeeID = ?;";
+        final String sql = "delete from employees where employeeID = ?;";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);

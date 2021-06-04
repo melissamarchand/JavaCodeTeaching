@@ -78,7 +78,7 @@ public class LocationDao {
 
     public void updateLocation(int locationID, String locationName) {
          
-        final String updateLocation = "update locations set locationID = ?, location_name = ? , where locationID = ?;";
+        final String updateLocation = "update locations set location_name = ? where locationID = ?;";
 
         // establish a connection
 
@@ -87,8 +87,8 @@ public class LocationDao {
 
                 // create a car statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement(updateLocation)) {
-                    preparedStatement.setInt(1, locationID);
-                    preparedStatement.setString(2, locationName);
+                    preparedStatement.setInt(2, locationID);
+                    preparedStatement.setString(1, locationName);
                 
 
             // execute query or update query
@@ -103,7 +103,7 @@ public class LocationDao {
 
 
     public void deleteLocation(Integer locationID){
-        final String getTransaction = "DELETE * FROM locations where locationID = ?";
+        final String getTransaction = "DELETE FROM locations where locationID = ?;";
 
         try (
             Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
