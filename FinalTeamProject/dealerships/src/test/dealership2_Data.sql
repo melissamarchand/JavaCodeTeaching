@@ -6,11 +6,11 @@ INSERT INTO customers (name, address, phone) VALUES('Bob_Dylan', '3106_Olive_St_
 INSERT INTO customers (name, address, phone) VALUES('Eric_Forman', '3126_Sampson_St_Aurora_CO_80014', '303.568.6740');
 
 -- vehicles DATA, 4 records minimum
-INSERT INTO vehicles (is_sold, price, model, make) VALUES(0, '5509000', 'Toyota', 'Supra');
-INSERT INTO vehicles (is_sold, price, model, make) VALUES(0, '5309000', 'Toyota', 'Tundra');
-INSERT INTO vehicles (is_sold, price, model, make) VALUES(0, '5690000', 'Tesla', 'Model_3');
-INSERT INTO vehicles (is_sold, price, model, make) VALUES(0, '9305000', 'Lexus', 'LC');
-INSERT INTO vehicles (is_sold, price, model, make) VALUES(0, '6090000', 'Audi', 'S5');
+INSERT INTO vehicles (locationID, is_sold, price, model, make) VALUES(2, 0, '5509000', 'Toyota', 'Supra');
+INSERT INTO vehicles (locationID, is_sold, price, model, make) VALUES(2, 0, '5309000', 'Toyota', 'Tundra');
+INSERT INTO vehicles (locationID, is_sold, price, model, make) VALUES(3, 0, '5690000', 'Tesla', 'Model_3');
+INSERT INTO vehicles (locationID, is_sold, price, model, make) VALUES(3, 0, '9305000', 'Lexus', 'LC');
+INSERT INTO vehicles (locationID, is_sold, price, model, make) VALUES(4, 0, '6090000', 'Audi', 'S5');
 
 
 -- transactions DATA, 3 records minimum

@@ -42,8 +42,8 @@ public class DefaultDealershipService implements DealershipService{
     }
    
 	@Override
-    public void newCustomer(int customerID, String name, String address, String phone) {
-        customerDao.newCustomer(customerID, name, address, phone);        
+    public void newCustomer(String name, String address, String phone) {
+        customerDao.newCustomer(name, address, phone);        
     }
 
     @Override
@@ -52,8 +52,8 @@ public class DefaultDealershipService implements DealershipService{
     }
 
     @Override
-     public void deleteCustomer(int customerID, String name, String address, String phone){
-        customerDao.deleteCustomer(customerID, name, address, phone);
+     public void deleteCustomer(int customerID){
+        customerDao.deleteCustomer(customerID);
     }
     
 
@@ -101,8 +101,8 @@ public List<Location> getLocation(int locationID){
  }
 
  @Override
- public void newLocation(int locationID, String locationName) {
-     locationDao.newLocation(locationID, locationName);        
+ public void newLocation(String locationName) {
+     locationDao.newLocation(locationName);        
  }
  
 //==========================Employees===============================================
@@ -113,8 +113,8 @@ public List<Location> getLocation(int locationID){
  }
 
 	@Override
- public void newEmployee(int customerID, String name, int locationID) {
-     employeeDao.newEmployee(customerID, name, locationID);        
+ public void newEmployee(String name, int locationID) {
+     employeeDao.newEmployee( name, locationID);        
  }
 
  @Override
@@ -123,8 +123,8 @@ public List<Location> getLocation(int locationID){
  }
 
  @Override
-  public void deleteEmployee(int customerID, String name, int locationID){
-	 employeeDao.deleteEmployee(customerID, name, locationID);
+  public void deleteEmployee(int customerID){
+	 employeeDao.deleteEmployee(customerID);
  }
  
 
@@ -146,8 +146,8 @@ public void updateVehicle(int vehicleID, int locationID, boolean is_sold, String
 }
 
 @Override
-public void newVehicle(int vehicleID, int locationID, boolean is_sold, String make, String model, double price) {
-    vehicleDao.newVehicle(vehicleID, locationID, is_sold, make, model, price);
+public void newVehicle(int locationID, boolean is_sold, String make, String model, double price) {
+    vehicleDao.newVehicle(locationID, is_sold, make, model, price);
 }
  
  

@@ -37,8 +37,8 @@ public class DefaultDealershipController implements DealershipController{
     
     // Insert operation on customers table
     @Override
-    public void newCustomer(int customerID, String name, String address, String phone){
-        dealershipService.newCustomer(customerID, name, address, phone);
+    public void newCustomer(String name, String address, String phone){
+        dealershipService.newCustomer(name, address, phone);
     }
 
     public void updateCustomer(int customerID, String name, String address, String phone){
@@ -46,8 +46,8 @@ public class DefaultDealershipController implements DealershipController{
     }
 
     // Delete operation on customers table
-    public void deleteCustomer(int customerID, String name, String address, String phone){
-        dealershipService.deleteCustomer(customerID, name, address, phone);
+    public void deleteCustomer(int customerID){
+        dealershipService.deleteCustomer(customerID);
     }
     
 
@@ -99,8 +99,8 @@ public class DefaultDealershipController implements DealershipController{
     }
 
     @Override
-    public void newLocation(int locationID, String locationName) {
-       dealershipService.newLocation(locationID, locationName);
+    public void newLocation(String locationName) {
+       dealershipService.newLocation(locationName);
         
     }
     
@@ -115,8 +115,8 @@ public class DefaultDealershipController implements DealershipController{
     }
     
    //@Override
-    public void newEmployee(int employeeID, String name, int locationID){
-        dealershipService.newEmployee(employeeID, name, locationID);
+    public void newEmployee(String name, int locationID){
+        dealershipService.newEmployee(name, locationID);
     }
 
     public void updateEmployee(int employeeID, String name, int locationID){
@@ -124,8 +124,8 @@ public class DefaultDealershipController implements DealershipController{
     }
 
   
-    public void deleteEmployee(int employeeID, String name, int locationID){
-        dealershipService.deleteEmployee(employeeID, name, locationID);
+    public void deleteEmployee(int employeeID){
+        dealershipService.deleteEmployee(employeeID);
     }
 
 
@@ -144,8 +144,8 @@ public class DefaultDealershipController implements DealershipController{
        dealershipService.updateVehicle(vehicleID, locationID, is_sold, make, model, price);
    }
    @Override
-   public void newVehicle(int vehicleID,int locationID, boolean is_sold, String make, String model, double price) {
-   dealershipService.newVehicle(vehicleID, locationID, is_sold, make, model, price);
+   public void newVehicle(int locationID, boolean is_sold, String make, String model, double price) {
+   dealershipService.newVehicle(locationID, is_sold, make, model, price);
 }
 
 }

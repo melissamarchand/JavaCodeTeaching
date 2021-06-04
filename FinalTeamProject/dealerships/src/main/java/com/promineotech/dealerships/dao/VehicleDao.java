@@ -13,10 +13,10 @@ import com.promineotech.dealerships.entity.Vehicle;
 public class VehicleDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Dolphins";
+    private static final String PASSWORD = "password1";
 
      public List<Vehicle> getVehicle(Integer vehicleID) {
-    	   final String getVehicle = "SELECT * FROM vehicles where transactionID = ?";
+    	   final String getVehicle = "SELECT * FROM vehicles where vehicleID = ?";
     	   
     	   try(
     			   Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -47,20 +47,19 @@ public class VehicleDao {
        }
        
       
-       public void newVehicle(int vehicleID, int locationID, boolean is_sold, String make, String model, double price) {
-    	   final String updateVehicle = "INSERT into vehicle (int vehicleID, int locationID, boolean is_sold, String make, String model, double price)" +
+       public void newVehicle(int locationID, boolean is_sold, String make, String model, double price) {
+    	   final String updateVehicle = "INSERT into vehicle (int locationID, boolean is_sold, String make, String model, double price)" +
        "Values (?,?,?,?,?,?);";
     	   
     	   try(
     		  Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
     			   
     			   PreparedStatement preparedStatement = connection.prepareStatement(updateVehicle)){
-    		   preparedStatement.setInt(1, vehicleID);
-    		   preparedStatement.setInt(2,locationID);
-    		   preparedStatement.setBoolean(3, is_sold);
-    		   preparedStatement.setString(4, make);
-    		   preparedStatement.setString(5, model);
-    		   preparedStatement.setDouble(6, price);
+    		   preparedStatement.setInt(1,locationID);
+    		   preparedStatement.setBoolean(2, is_sold);
+    		   preparedStatement.setString(3, make);
+    		   preparedStatement.setString(4, model);
+    		   preparedStatement.setDouble(5, price);
     		   
     		   preparedStatement.executeUpdate();   	
   	   }catch (SQLException e) {
@@ -89,7 +88,7 @@ public class VehicleDao {
    	  }
    	}
        public void deleteVehicle(Integer vehicleID) {
-    	   final String getVehicles = "DELETE * FROM vehicles where vehicles_ID = ?";
+    	   final String getVehicles = "DELETE * FROM vehicles where vehicleID = ?";
     	   
     	   try(
     			   Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);

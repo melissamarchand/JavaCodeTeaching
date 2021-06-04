@@ -17,7 +17,7 @@ import com.promineotech.dealerships.entity.Employee;
 public class EmployeeDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Dolphins";
+    private static final String PASSWORD = "password1";
 	
     public List<Employee> listAllEmployees() {
 		final String sql = "SELECT * FROM employees";
@@ -46,8 +46,8 @@ public class EmployeeDao {
 	}
     
  // new 
-    public void newEmployee(int customerID, String name, int locationID) {
-        final String sql = "insert into employees add name = ?, locationID = ? , where customerID = ?;";
+    public void newEmployee(String name, int locationID) {
+        final String sql = "insert into employees (name, location) Values (?, ?);";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -58,10 +58,9 @@ public class EmployeeDao {
 
                 preparedStatement.setString(1, name);
                 preparedStatement.setInt(2, locationID);
-                preparedStatement.setInt(3, customerID);
 
 			  
-			    preparedStatement.executeQuery();
+			    preparedStatement.executeUpdate();
             
         } catch (SQLException e) {
 			printSQLException(e);
@@ -83,7 +82,7 @@ public class EmployeeDao {
 			preparedStatement.setInt(3, locationID);
 
 			// execute the employee query
-			preparedStatement.executeQuery();
+			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -93,8 +92,8 @@ public class EmployeeDao {
 	
 	// Delete 
     
-    public void deleteEmployee(int employeeID, String name, int locationID) {
-        final String sql = "delete employee, confirm name = ?, locationID = ? , where employeeID = ?;";
+    public void deleteEmployee(int employeeID) {
+        final String sql = "delete employee where employeeID = ?;";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -103,12 +102,10 @@ public class EmployeeDao {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ) {
 
-                preparedStatement.setString(1, name);
-                preparedStatement.setInt(2, locationID);
-                preparedStatement.setInt(3, employeeID);
+                preparedStatement.setInt(1, employeeID);
 
 			    
-			    preparedStatement.executeQuery();
+			    preparedStatement.executeUpdate();
             
         } catch (SQLException e) {
 			printSQLException(e);
