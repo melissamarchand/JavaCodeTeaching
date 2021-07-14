@@ -3,8 +3,10 @@ package com.promineotech.dealerships.controller;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
+import com.promineotech.dealerships.entity.Vehicle;
 import com.promineotech.dealerships.service.DealershipService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +37,8 @@ public class DefaultDealershipController implements DealershipController{
     
     // Insert operation on customers table
     @Override
-    public void newCustomer(int customerID, String name, String address, String phone){
-        dealershipService.newCustomer(customerID, name, address, phone);
+    public void newCustomer(String name, String address, String phone){
+        dealershipService.newCustomer(name, address, phone);
     }
 
     public void updateCustomer(int customerID, String name, String address, String phone){
@@ -44,9 +46,10 @@ public class DefaultDealershipController implements DealershipController{
     }
 
     // Delete operation on customers table
-    public void deleteCustomer(int customerID, String name, String address, String phone){
-        dealershipService.deleteCustomer(customerID, name, address, phone);
+    public void deleteCustomer(int customerID){
+        dealershipService.deleteCustomer(customerID);
     }
+    
 
   //==========================Transactions===============================================
 
@@ -84,7 +87,7 @@ public class DefaultDealershipController implements DealershipController{
 
     @Override
     public void deleteLocation(int locationID) {
-        dealershipService.deleteTransaction(locationID);
+        dealershipService.deleteLocation(locationID);
         
     }
 
@@ -96,8 +99,53 @@ public class DefaultDealershipController implements DealershipController{
     }
 
     @Override
-    public void newLocation(int locationID, String locationName) {
-       dealershipService.newLocation(locationID, locationName);
+    public void newLocation(String locationName) {
+       dealershipService.newLocation(locationName);
         
     }
+    
+    //==========================Employees===============================================
+
+    @Override
+    @GetMapping("Employees")
+    public ResponseEntity<List<Employee>> listEmployees(){
+        log.info("employee list requested");
+        List<Employee> employees = dealershipService.listEmployees();
+        return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK);
+    }
+    
+   //@Override
+    public void newEmployee(String name, int locationID){
+        dealershipService.newEmployee(name, locationID);
+    }
+
+    public void updateEmployee(int employeeID, String name, int locationID){
+        dealershipService.updateEmployee(employeeID, name, locationID);
+    }
+
+  
+    public void deleteEmployee(int employeeID){
+        dealershipService.deleteEmployee(employeeID);
+    }
+
+
+    //===========================Vehicles==============================================
+    @Override
+    public ResponseEntity<List<Vehicle>> getVehicle(int vehicleID) {
+        List<Vehicle> vehicle = dealershipService.getVehicle(vehicleID);
+        return new ResponseEntity<List<Vehicle>>(vehicle, HttpStatus.OK);
+    }
+   @Override
+   public void deleteVehicle(int vehicleID) {
+       dealershipService.deleteVehicle(vehicleID);
+    }
+   @Override
+   public void updateVehicle(int vehicleID,int locationID, boolean is_sold, String make, String model, double price) {
+       dealershipService.updateVehicle(vehicleID, locationID, is_sold, make, model, price);
+   }
+   @Override
+   public void newVehicle(int locationID, boolean is_sold, String make, String model, double price) {
+   dealershipService.newVehicle(locationID, is_sold, make, model, price);
+}
+
 }

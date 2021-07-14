@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class CustomerDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Dolphins";
+    private static final String PASSWORD = "password1";
 
     public List<Customer> listAllCustomers() {
         final String sql = "SELECT * FROM customers";
@@ -43,13 +43,14 @@ public class CustomerDao {
             return list;
         } catch (SQLException e) {
 			printSQLException(e);
+			System.out.println("test");
             return Collections.emptyList();
 		} 
             
     }
     // Insert operation for customers table
-    public void newCustomer(int customerID, String name, String address, String phone) {
-        final String sql = "insert into customers add name = ?, address = ? , phone = ?, where customerID = ?;";
+    public void newCustomer(String name, String address, String phone) {
+        final String sql = "insert into customers (name, address, phone) Values (?,?,?);";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -61,10 +62,9 @@ public class CustomerDao {
                 preparedStatement.setString(1, name);
                 preparedStatement.setString(2, address);
                 preparedStatement.setString(3, phone);
-                preparedStatement.setInt(4, customerID);
 
 			    // execute the car query
-			    preparedStatement.executeQuery();
+			    preparedStatement.executeUpdate();
             
         } catch (SQLException e) {
 			printSQLException(e);
@@ -73,7 +73,7 @@ public class CustomerDao {
     }
     
     public void updateCustomer(int customerID, String name, String address, String phone) {
-        final String sql = "update customers set name = ?, address = ? , phone = ?, where customerID = ?;";
+        final String sql = "update customers set name = ?, address = ? , phone = ? where customerID = ?;";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -88,7 +88,7 @@ public class CustomerDao {
                 preparedStatement.setInt(4, customerID);
 
 			    // execute the car query
-			    preparedStatement.executeQuery();
+			    preparedStatement.executeUpdate();
             
         } catch (SQLException e) {
 			printSQLException(e);
@@ -98,8 +98,8 @@ public class CustomerDao {
 
 	// Delete Operation for Customers Table
     
-    public void deleteCustomer(int customerID, String name, String address, String phone) {
-        final String sql = "delete customer, confirm name = ?, address = ? , phone = ?, where customerID = ?;";
+    public void deleteCustomer(int customerID) {
+        final String sql = "delete from customers where customerID = ?;";
 
         try (
 			Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -108,13 +108,10 @@ public class CustomerDao {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ) {
 
-                preparedStatement.setString(1, name);
-                preparedStatement.setString(2, address);
-                preparedStatement.setString(3, phone);
-                preparedStatement.setInt(4, customerID);
+                preparedStatement.setInt(1, customerID);
 
 			    // execute the car query
-			    preparedStatement.executeQuery();
+			    preparedStatement.executeUpdate();
             
         } catch (SQLException e) {
 			printSQLException(e);

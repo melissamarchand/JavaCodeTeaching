@@ -3,8 +3,10 @@ package com.promineotech.dealerships.controller;
 import java.util.List;
 
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
+import com.promineotech.dealerships.entity.Vehicle;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,28 +34,24 @@ public interface DealershipController {
     @PostMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void newCustomer(
-        @RequestParam(required = true) int customerID, 
-        @RequestParam(required = false) String name,
-        @RequestParam(required = false) String address, 
-        @RequestParam(required = false) String phone);
+        @RequestParam(required = true) String name,
+        @RequestParam(required = true) String address, 
+        @RequestParam(required = true) String phone);
 
     @PutMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void updateCustomer(
         @RequestParam(required = true) int customerID, 
-        @RequestParam(required = false) String name,
-        @RequestParam(required = false) String address, 
-        @RequestParam(required = false) String phone);
+        @RequestParam(required = true) String name,
+        @RequestParam(required = true) String address, 
+        @RequestParam(required = true) String phone);
 
 
     // Delete operation on customers table
     @DeleteMapping("Customers")
     @ResponseStatus(code = HttpStatus.OK)
     void deleteCustomer(
-        @RequestParam(required = true) int customerID, 
-        @RequestParam(required = false) String name,
-        @RequestParam(required = false) String address, 
-        @RequestParam(required = false) String phone);
+        @RequestParam(required = true) int customerID);
 
     //==========================Transactions===============================================
 
@@ -87,11 +85,11 @@ public interface DealershipController {
     @ResponseStatus(code = HttpStatus.OK)
     void updateTransaction(
         @RequestParam(required = true) int transactionID, 
-        @RequestParam(required = false) int vehicleID, 
-        @RequestParam(required = false) int customerID, 
-        @RequestParam(required = false) int employeeID, 
-        @RequestParam(required = false) int locationID, 
-        @RequestParam(required = false) String date);
+        @RequestParam(required = true) int vehicleID, 
+        @RequestParam(required = true) int customerID, 
+        @RequestParam(required = true) int employeeID, 
+        @RequestParam(required = true) int locationID, 
+        @RequestParam(required = true) String date);
 
 
 //==========================Locations===============================================
@@ -116,16 +114,83 @@ void deleteLocation(
 @PostMapping("Locations")
 @ResponseStatus(code = HttpStatus.OK)
 void newLocation( 
-    @RequestParam(required = true) int locationID, 
     @RequestParam(required = true) String locationName);
 
 @PutMapping("Locations")
 @ResponseStatus(code = HttpStatus.OK)
 void updateLocation(
-    @RequestParam(required = false) int locationID, 
-    @RequestParam(required = false) String locationName);
+    @RequestParam(required = true) int locationID, 
+    @RequestParam(required = true) String locationName);
+
+//==========================Employee===============================================
 
 
+@GetMapping("Employees")
+ResponseEntity<List<Employee>> listEmployees();
+
+
+@PostMapping("Employees")
+@ResponseStatus(code = HttpStatus.OK)
+void newEmployee(
+    @RequestParam(required = true) String name,
+    @RequestParam(required = true) int locationID);
+   
+
+@PutMapping("Employees")
+@ResponseStatus(code = HttpStatus.OK)
+void updateEmployee(
+    @RequestParam(required = true) int employeeID, 
+    @RequestParam(required = true) String name,
+    @RequestParam(required = true) int locationID);
+
+
+@DeleteMapping("Employees")
+@ResponseStatus(code = HttpStatus.OK)
+void deleteEmployee(
+    @RequestParam(required = true) int employeeID);
+
+
+
+//========================Vehicles========================================
+
+  /**
+   *  Vehicle handlers
+   *  @param vehicleID
+   *  @return
+   */
+  @GetMapping("Vehicles")
+  @ResponseStatus(code = HttpStatus.OK)
+  ResponseEntity<List<Vehicle>> getVehicle(
+          @RequestParam(required = true) int vehicleID
+  );
+
+  @DeleteMapping("Vehicles")
+  @ResponseStatus(code = HttpStatus.OK)
+  void deleteVehicle(
+          @RequestParam(required = true) int vehicleID);
+
+
+
+  @PostMapping("Vehicles")
+  @ResponseStatus(code = HttpStatus.OK)
+  void newVehicle(
+          @RequestParam(required = true) int locationID,
+          @RequestParam(required = true) boolean is_sold,
+          @RequestParam(required = true) String make,
+          @RequestParam(required = true) String model,
+          @RequestParam(required = true) double price);
+
+  @PutMapping("Vehicles")
+  @ResponseStatus(code = HttpStatus.OK)
+  void updateVehicle(
+          @RequestParam(required = true) int vehicleID,
+          @RequestParam(required = true) int locationID,
+          @RequestParam(required = true) boolean is_sold,
+          @RequestParam(required = true) String make,
+          @RequestParam(required = true) String model,
+          @RequestParam(required = true) double price);
 
 } // end DealershipController Interface
+
+
 

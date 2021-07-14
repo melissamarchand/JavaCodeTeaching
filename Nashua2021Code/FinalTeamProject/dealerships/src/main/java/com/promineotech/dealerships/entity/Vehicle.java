@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Vehicle {
     private int vehicleID;
-    private int dealershipID;
+    private int locationID;
     private boolean is_sold;
     private String make;
     private String model;

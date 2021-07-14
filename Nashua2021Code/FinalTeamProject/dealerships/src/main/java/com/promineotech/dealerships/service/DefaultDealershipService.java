@@ -8,8 +8,10 @@ import com.promineotech.dealerships.dao.EmployeeDao;
 import com.promineotech.dealerships.dao.TransactionDao;
 import com.promineotech.dealerships.dao.VehicleDao;
 import com.promineotech.dealerships.entity.Customer;
+import com.promineotech.dealerships.entity.Employee;
 import com.promineotech.dealerships.entity.Location;
 import com.promineotech.dealerships.entity.Transaction;
+import com.promineotech.dealerships.entity.Vehicle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,8 +42,8 @@ public class DefaultDealershipService implements DealershipService{
     }
    
 	@Override
-    public void newCustomer(int customerID, String name, String address, String phone) {
-        customerDao.newCustomer(customerID, name, address, phone);        
+    public void newCustomer(String name, String address, String phone) {
+        customerDao.newCustomer(name, address, phone);        
     }
 
     @Override
@@ -50,8 +52,8 @@ public class DefaultDealershipService implements DealershipService{
     }
 
     @Override
-     public void deleteCustomer(int customerID, String name, String address, String phone){
-        customerDao.deleteCustomer(customerID, name, address, phone);
+     public void deleteCustomer(int customerID){
+        customerDao.deleteCustomer(customerID);
     }
     
 
@@ -75,7 +77,8 @@ public class DefaultDealershipService implements DealershipService{
 
     @Override
     public void newTransaction(int vehicleID, int customerID, int employeeID, int locationID, String date) {
-        vehicleDao.updateVehicle(vehicleID, true);
+    	//Vehicle car = vehicleDao.getVehicle(vehicleID).get(0);
+        //vehicleDao.updateVehicle(vehicleID, car.getLocationID(), true, car.getMake(), car.getModel(), car.getPrice());
         transactionDao.newTransaction(vehicleID, customerID, employeeID, locationID, date);        
     }
 
@@ -98,11 +101,54 @@ public List<Location> getLocation(int locationID){
  }
 
  @Override
- public void newLocation(int locationID, String locationName) {
-     locationDao.newLocation(locationID, locationName);        
+ public void newLocation(String locationName) {
+     locationDao.newLocation(locationName);        
  }
  
+//==========================Employees===============================================
+
+ @Override
+ public List<Employee> listEmployees(){
+     return employeeDao.listAllEmployees();
+ }
+
+	@Override
+ public void newEmployee(String name, int locationID) {
+     employeeDao.newEmployee( name, locationID);        
+ }
+
+ @Override
+ public void updateEmployee(int customerID, String name, int locationID){
+	 employeeDao.updateEmployee(customerID, name, locationID);
+ }
+
+ @Override
+  public void deleteEmployee(int customerID){
+	 employeeDao.deleteEmployee(customerID);
+ }
  
+
+//============================vehicle==========================================
+ 
+public List<Vehicle> getVehicle(int vehicleID){
+    return vehicleDao.getVehicle(vehicleID);
+
+}
+@Override
+public void deleteVehicle(int vehicleID) {
+    vehicleDao.deleteVehicle(vehicleID);
+}
+
+@Override
+public void updateVehicle(int vehicleID, int locationID, boolean is_sold, String make, String model, double price) {
+    vehicleDao.updateVehicle(vehicleID, locationID, is_sold, make, model, price);
+
+}
+
+@Override
+public void newVehicle(int locationID, boolean is_sold, String make, String model, double price) {
+    vehicleDao.newVehicle(locationID, is_sold, make, model, price);
+}
  
  
 }// end DefaultDealershipService class

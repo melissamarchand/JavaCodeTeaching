@@ -19,7 +19,7 @@ import com.promineotech.dealerships.entity.Location;
 public class LocationDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "password1";
 	
 	//getLocation method- get a location by id
     public List<Location> getLocation(Integer locationID){
@@ -51,10 +51,9 @@ public class LocationDao {
     }
 
     
-    public void newLocation(int locationID, String locationName) {
+    public void newLocation( String locationName) {
          
-        final String updateTransaction = "INSERT into locations (locationID, location_name)" +
-            "Values (?, ?);";
+        final String updateTransaction = "INSERT into locations (location_name) Values (?);";
 
         // establish a connection
 
@@ -63,8 +62,7 @@ public class LocationDao {
 
                 // create a car statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement(updateTransaction)) {
-                    preparedStatement.setInt(1, locationID);
-                    preparedStatement.setString(2, locationName);
+                    preparedStatement.setString(1, locationName);
 
 
             // execute query or update query
@@ -80,7 +78,7 @@ public class LocationDao {
 
     public void updateLocation(int locationID, String locationName) {
          
-        final String updateLocation = "update locations set locationID = ?, location_name = ? , where locationID = ?;";
+        final String updateLocation = "update locations set location_name = ? where locationID = ?;";
 
         // establish a connection
 
@@ -89,8 +87,8 @@ public class LocationDao {
 
                 // create a car statement using connection object
                 PreparedStatement preparedStatement = connection.prepareStatement(updateLocation)) {
-                    preparedStatement.setInt(1, locationID);
-                    preparedStatement.setString(2, locationName);
+                    preparedStatement.setInt(2, locationID);
+                    preparedStatement.setString(1, locationName);
                 
 
             // execute query or update query
@@ -105,7 +103,7 @@ public class LocationDao {
 
 
     public void deleteLocation(Integer locationID){
-        final String getTransaction = "DELETE * FROM locations where locationID = ?";
+        final String getTransaction = "DELETE FROM locations where locationID = ?;";
 
         try (
             Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);

@@ -18,11 +18,11 @@ import com.promineotech.dealerships.entity.Transaction;
 public class TransactionDao {
     private static final String HOSTNAME = "jdbc:mysql://localhost:3306/dealership?useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Dolphins";
+    private static final String PASSWORD = "password1";
 
     
         public List<Transaction> getTransaction(Integer transactionID){
-            final String getTransaction = "SELECT * FROM transactions where transactionID = ?";
+            final String getTransaction = "SELECT * FROM transactions where transactionID = ?;";
 
             try (
                     Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
@@ -41,7 +41,7 @@ public class TransactionDao {
                     int customerID = rs.getInt("customerID");
                     int employeeID = rs.getInt("employeeID");
                     int locationID = rs.getInt("locationID");
-                    String date = rs.getString("date");
+                    String date = rs.getString("datestamp");
                     Transaction transaction = new Transaction(transaction_id, vehicleID, customerID, employeeID, locationID, date);
                     list.add(transaction);
                 }
@@ -56,8 +56,8 @@ public class TransactionDao {
         public void newTransaction(int vehicleID, int customerID, int employeeID, int locationID, 
             String date) {
              
-            final String updateTransaction = "INSERT into transactions (vehicleID, customerID, employeeID, locationID, date)" +
-                "Values (?, ?, ?, ?, ?);";
+            final String updateTransaction = "INSERT into transactions (vehicleID, customerID, employeeID, locationID, datestamp)" +
+                "Values (?, ?, ?, ?, curdate());";
     
             // establish a connection
     
@@ -70,7 +70,6 @@ public class TransactionDao {
                         preparedStatement.setInt(2, customerID);
                         preparedStatement.setInt(3, employeeID);
                         preparedStatement.setInt(4, locationID);
-                        preparedStatement.setString(5, date);
     
                 // execute query or update query
     
@@ -86,7 +85,7 @@ public class TransactionDao {
         public void updateTransaction(int transactionID, int vehicleID, int customerID, int employeeID, int locationID, 
             String date) {
              
-            final String updateTransaction = "update transactions set vehicleID = ?, customerID = ? , employeeID = ?, locationID = ?, date = ? where transactionID = ?;";
+            final String updateTransaction = "update transactions set vehicleID = ?, customerID = ? , employeeID = ?, locationID = ?, datestamp = ? where transactionID = ?;";
     
             // establish a connection
     
@@ -114,7 +113,7 @@ public class TransactionDao {
 
 
         public void deleteTransaction(Integer transactionID){
-            final String getTransaction = "DELETE * FROM transactions where transaction_id = ?";
+            final String getTransaction = "DELETE FROM transactions where transactionID = ?;";
 
             try (
                     Connection connection = DriverManager.getConnection(HOSTNAME, USERNAME, PASSWORD);
