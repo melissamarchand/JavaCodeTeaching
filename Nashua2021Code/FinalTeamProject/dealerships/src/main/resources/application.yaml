@@ -4,7 +4,3 @@ spring:
         username: 
         url: jdbc:mysql://3306/dealership
 
-logging:
-    level:
-        root: warn
-        '[com.prominiotech]': debug
