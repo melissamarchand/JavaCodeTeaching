@@ -5,6 +5,9 @@ public class Main {
     //Main thread  
     {
         
+        System.out.println("Check");
+    
+        
     }
     
 }
