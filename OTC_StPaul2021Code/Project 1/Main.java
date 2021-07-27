@@ -6,6 +6,7 @@ public class Main {
     {
         
         System.out.println("Check");
+        System.out.println("NEw line");
     
         
     }
