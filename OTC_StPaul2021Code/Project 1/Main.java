@@ -6,7 +6,15 @@ public class Main {
     {
         
         System.out.println("Check");
-        System.out.println("New line");
+        System.out.println("NEw line");
+        System.out.println("Check");
+        System.out.println("NEw line");
+        System.out.println("Check");
+        System.out.println("NEw line");
+        System.out.println("Check");
+        System.out.println("NEw line");
+        System.out.println("Check");
+        System.out.println("NEw line");
     
         
     }
