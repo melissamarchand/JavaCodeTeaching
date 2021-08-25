@@ -1,42 +1,59 @@
-package BasicCode;
-
 //Base class
-class Box{
+class BaseBox{
 
-    //Default constructor should be empty for inheritance if needed
-    public Box(){}
-	
-	public void printBox()
-	{
-		System.out.println("The is a box");
-	}
-}
-class Box2{
-    //Box variables
-    private final String brandName = "Big Box Comp";
+    //private final String brandName = "Big Box Comp";
     private int width;
     private int lenght;
     private int height;
     public boolean isOpen = false; //Defaults to being closes
 
-    //Constructor
     //Creates a new box object
-    public Box2(int width_param, int lenght_param, int height_param)
+    public BaseBox(int width_param, int lenght_param, int height_param) // Cont 1
     {
         //Assign object variable with parameters from method
         this.width = width_param;
         this.lenght = lenght_param;
         this.height = height_param;
     }
-
     //Default constructor should be empty for inheritance if needed
-    public Box2(){}
-
+    public BaseBox(){}
+	
     //Object Methods
     public int volume()
     {
         return this.width * this.lenght * this.height;
     }
+
+    //Setter methods
+    public void setWidth(int width){this.width = width;}
+    public void setLenght(int lenght){this.lenght = lenght;}
+    public void setHeight(int height){this.height = height;}
+
+    //Getter methods
+    //public String getBoxName(){return this.brandName;}
+    public int getWidth(){return this.width;}
+    public int getLenght(){return this.lenght;}
+    public int getHeight(){return  this.height;}
+    public boolean getClosedStatus(){return this.isOpen;}
+}
+
+class BobsBoxes extends BaseBox{
+    //Box variables
+    private final String brandName = "Bobs Box Comp";
+    //Constructor
+    public BobsBoxes(int width_param, int lenght_param, int height_param, boolean openness) //Cont 2
+    {
+        super(width_param, lenght_param, height_param);
+        this.isOpen = openness;
+    }
+    public BobsBoxes(int width_param, int lenght_param, int height_param) //Cont 2
+    {
+        super(width_param, lenght_param, height_param);
+        this.isOpen = true;
+    }
+    //Default constructor should be empty for inheritance if needed
+    public BobsBoxes(){}
+
     public void openBox()
     {
         isOpen = true;
@@ -46,30 +63,18 @@ class Box2{
         isOpen = false;
         System.out.println("The Box is closed");
     }
-
-
-
-    //Setter methods
-    public void setWidth(int width){this.width = width;}
-    public void setLenght(int lenght){this.lenght = lenght;}
-    public void setHeight(int height){this.height = height;}
-
-    //Getter methods
-    public String getBoxName(){return this.brandName;}
-    public int getWidth(){return this.width;}
-    public int getLenght(){return this.lenght;}
-    public int getHeight(){return  this.height;}
-    public boolean getClosedStatus(){return this.isOpen;}
     //Better descriptive getter method which is more specialized
     public String betterGetClosedStatus(){
         if(this.isOpen == false){return "The box is closed";}else {return "The box is open";}
 
     }
+    public String getBoxName(){return this.brandName;}
+
 
 }
 //Extended class (Inheritance) This will use the default constrictor from the Box class
-class ShippingBox extends Box2{
-
+class ShippingBox extends BobsBoxes{
+    //box2 componets 
     //Special variables
     public String destination;
     public String reciver;
@@ -78,7 +83,7 @@ class ShippingBox extends Box2{
     public ShippingBox(int width, int lenght, int height, String destination, String reciver)
     {
         // invoking base-class (Box) constructor
-        super(width, lenght, height); //build a sudo box2
+        super(width, lenght, height, true); //build a sudo
         this.destination = destination;
         this.reciver = reciver;
     }
@@ -100,12 +105,11 @@ public class ComplexExample {
 
     public static void main(String[] args){
 		
-		Box lameBox = new Box();
-		lameBox.printBox();
+		BaseBox lameBox = new BaseBox();
 
 	   //public Box2(int width_param, int lenght_param, int height_param)
-        Box2 box_one = new Box2(10,12,20);
-        Box2 box_two = new Box2(5,5,5);
+        BobsBoxes box_one = new BobsBoxes(10,12,20);
+        BobsBoxes box_two = new BobsBoxes(5,5,5, false);
 
         //Check volume of the boxes
         int bOneVol = box_one.volume();
